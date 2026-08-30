@@ -263,7 +263,7 @@ details[open].more>summary::before,details[open].dstd>summary::before{content:"\
 .topbar{background:transparent;color:#fff;width:100%;position:relative;z-index:2;
   border-bottom:1px solid rgba(255,255,255,.13)}
 .hero{position:relative}
-.hero-in{max-width:1340px;margin:0 auto;padding:34px 26px 92px;position:relative;z-index:1;
+.hero-in{--heroW:1100px;max-width:1340px;margin:0 auto;padding:34px 26px 92px;position:relative;z-index:1;
   display:flex;flex-direction:column;gap:16px}
 .topbar-in{max-width:none;margin:0;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
   padding:11px max(20px, calc((100% - 1060px)/2 + 20px)) 11px 26px}
@@ -280,7 +280,20 @@ h1{display:flex;align-items:baseline;gap:.26em;flex-wrap:wrap;font-size:54px;lin
 .t-a{font-weight:700}
 .t-b{font-weight:500;color:#93AFD2;letter-spacing:-.025em}
 .hero .eyebrow{color:rgba(255,255,255,.62)}
-.hero .sub{color:rgba(255,255,255,.78);max-width:60ch;font-size:15px;line-height:1.85}
+.hero .sub{color:rgba(255,255,255,.78);max-width:var(--heroW);font-size:15px;line-height:1.85;
+  white-space:pre-line}
+.steps{list-style:none;margin:6px 0 0;padding:0;display:grid;
+  grid-template-columns:repeat(4,auto);justify-content:start;
+  gap:11px 24px;max-width:var(--heroW)}
+.steps li{display:flex;align-items:center;gap:10px;font-size:13.5px;line-height:1.4;
+  color:rgba(255,255,255,.8)}
+.stp-n{flex:none;width:23px;height:23px;border-radius:50%;
+  border:1.5px solid rgba(232,97,42,.9);color:#F0A184;
+  display:flex;align-items:center;justify-content:center;
+  font-family:Archivo,system-ui,sans-serif;font-size:11.5px;font-weight:700;letter-spacing:0}
+@media (max-width:900px){
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr));justify-content:stretch}
+}
 .title-block{position:relative;padding-left:21px}
 .title-block::before{content:"";position:absolute;left:0;top:4px;bottom:4px;width:3px;border-radius:2px;
   background:linear-gradient(180deg,#E8612A 0%,#E8612A 55%,rgba(232,97,42,0) 100%)}
@@ -298,6 +311,9 @@ h1{display:flex;align-items:baseline;gap:.26em;flex-wrap:wrap;font-size:54px;lin
   .title-block .eyebrow{margin-bottom:8px}
   .hero-in{padding:22px 14px 58px;gap:12px}
   .hero .sub{font-size:14px;line-height:1.78}
+  .steps{grid-template-columns:1fr;gap:9px;margin-top:4px}
+  .steps li{font-size:13px;gap:8px}
+  .stp-n{width:21px;height:21px;font-size:11px}
   .wrap{margin-top:-42px}
 }
 @media (max-width:1000px){ .hd-arc{display:none} }
@@ -505,6 +521,12 @@ body[data-lang="en"] .hint{font-family:inherit}
       <h1><span class="t-a">Bridge</span><span class="t-b">Hours</span></h1>
     </div>
     <p class="sub" id="sub"></p>
+    <ol class="steps">
+      <li><span class="stp-n">1</span><span id="st1"></span></li>
+      <li><span class="stp-n">2</span><span id="st2"></span></li>
+      <li><span class="stp-n">3</span><span id="st3"></span></li>
+      <li><span class="stp-n">4</span><span id="st4"></span></li>
+    </ol>
   </div>
   <div class="hd-arc" aria-hidden="true"></div>
 </div>
@@ -645,7 +667,7 @@ body[data-lang="en"] .hint{font-family:inherit}
   </div>
   <div class="sf-bar">
     <span>Copyright&copy; 2026 BEYONDBRIDGE&amp;CO. Pte. Ltd. All rights reserved</span>
-    <span class="sf-build">v1.22 &middot; 2026-08-30</span>
+    <span class="sf-build">v1.23 &middot; 2026-08-30</span>
   </div>
 </footer>
 </div>
@@ -748,7 +770,8 @@ var COMMON=["Asia/Tokyo","Asia/Singapore","America/New_York","America/Los_Angele
 /* ================= 文言 ================= */
 var STR={
  ja:{
-  sub:"各地域の希望時間を比較し、全員の負担が最も少ない会議候補を提案します。夏時間と冬時間は自動で調整されます。",
+  sub:"時差をまたぐ会議のための無料ツールです。全員にとって負担の少ない時間を提案し、カレンダー招待までワンステップで作成します。\n夏時間・冬時間は自動で調整されます。",
+  st1:"会議名を入力", st2:"国・地域を選択", st3:"希望時間を設定", st4:"候補を選んで招待を作成",
   tCond:"条件", tRes:"最有力候補", tChart:"24時間ビュー",
   tzhint:"この端末のタイムゾーン: ", lbDate:"会議日", lbDur:"所要時間", lbShift:"日付をずらす",
   prev:"前日", next:"翌日", week:"1週間後", today:"今日",
@@ -798,7 +821,8 @@ var STR={
   brandTag:"国や地域を越えて、革新的なアセットと最適なパートナーをつなぎます。"
  },
  en:{
-  sub:"Compares each region's preferred hours and proposes the slots that ask the least of everyone. Daylight saving is handled automatically.",
+  sub:"A free tool for meetings across time zones. It proposes the times that are easiest for everyone and creates the calendar invitation in one step.\nDaylight saving is handled automatically.",
+  st1:"Enter a meeting title", st2:"Select the countries and regions", st3:"Set preferred hours", st4:"Pick a slot and create the invitation",
   tCond:"Setup", tRes:"Best times", tChart:"24-hour view",
   tzhint:"This device: ", lbDate:"Meeting date", lbDur:"Length", lbShift:"Shift date",
   prev:"Prev day", next:"Next day", week:"+1 week", today:"Today",
@@ -1129,12 +1153,21 @@ function renderOpts(){
   box.querySelectorAll(".opt").forEach(function(b){
     b.addEventListener("click",function(){ addLoc(b.dataset.tz); }); });
 }
+function closePicker(refocus){
+  var p=$("picker"); if(!p || p.hidden) return;
+  p.hidden=true;
+  var t=$("addtoggle");
+  t.setAttribute("aria-expanded","false");
+  t.textContent=T("addOpen");
+  $("q").value="";
+  if(refocus){ try{ t.focus(); }catch(e){} }
+}
 function addLoc(tz){
   if(state.locs.length>=5){ toast(T("maxFive")); return; }
   if(state.locs.some(function(l){ return l.tz===tz; })) return;
   state.locs.push(makeLoc(tz));
   state.recent=[tz].concat(state.recent.filter(function(t){ return t!==tz; })).slice(0,8);
-  state.sel=null; save(); renderAll(); renderOpts();
+  state.sel=null; save(); closePicker(true); renderAll();
   toast(state.lang==="ja" ? (nameOf(BY_TZ[tz])+" を追加しました") : ("Added "+nameOf(BY_TZ[tz])));
 }
 
@@ -1534,6 +1567,8 @@ function applyLang(){
   $("dstsum").textContent=T("dstSum"); $("dsth1").textContent=T("dsth1"); $("dsth2").textContent=T("dsth2");
   $("bf-tag").textContent=T("brandTag");
   $("bf-brandline").textContent=T("brandLine");
+  $("st1").textContent=T("st1"); $("st2").textContent=T("st2");
+  $("st3").textContent=T("st3"); $("st4").textContent=T("st4");
   $("outro-text").textContent=T("outroText");
   $("outro-text2").textContent=T("outroText2");
   $("outro-h").textContent=T("outroH");
