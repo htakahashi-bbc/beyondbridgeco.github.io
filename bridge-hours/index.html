@@ -1,0 +1,1649 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="各地域の希望時間を比較し、全員の負担が最も少ない会議候補を提案します。夏時間と冬時間は自動で調整されます。クロスボーダー会議のスケジューリングツール。BeyondBridge&amp;Co. 提供。">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://beyondbridge.co/bridge-hours/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='11' fill='%230C245B'/%3E%3Cpath d='M11 45 Q32 15 53 45' stroke='%23E8612A' stroke-width='6' fill='none' stroke-linecap='round'/%3E%3Crect x='9' y='45' width='46' height='5' rx='2.5' fill='%23ffffff'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='11' fill='%230C245B'/%3E%3Cpath d='M11 45 Q32 15 53 45' stroke='%23E8612A' stroke-width='6' fill='none' stroke-linecap='round'/%3E%3Crect x='9' y='45' width='46' height='5' rx='2.5' fill='%23ffffff'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BeyondBridge&amp;Co.">
+<meta property="og:title" content="Bridge Hours">
+<meta property="og:description" content="各地域の希望時間を比較し、全員の負担が最も少ない会議候補を提案します。夏時間と冬時間は自動で調整されます。">
+<meta property="og:url" content="https://beyondbridge.co/bridge-hours/">
+<meta property="og:image" content="https://beyondbridge.co/bridge-hours/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bridge Hours">
+<meta name="twitter:description" content="Cross border meeting scheduling by BeyondBridge&amp;Co.">
+<meta name="twitter:image" content="https://beyondbridge.co/bridge-hours/og-image.png">
+<title>Bridge Hours</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap">
+
+<style>
+:root{
+  --bg:#EBEEF3; --surface:#FFFFFF; --surface2:#F3F5F9;
+  --ink:#151821; --ink2:#333A4A; --muted:#59606F; --line:#CDD4DF; --line2:#E3E7EE;
+  --accent:#0C245B; --accent-soft:#DDE4F0; --on-accent:#FFFFFF; --brand-or:#E8612A;
+  --ok:#1F6E54; --warn:#8E5F12; --bad:#96412F;
+  --ok-bg:#D6EBE0; --warn-bg:#F5E6C4; --bad-bg:#F3D9D3;
+  --band-work:#BEDECF; --band-edge:#EFDCAF; --band-off:#D8DDE6;
+  --warn-row:#FBF3E0; --bad-row:#FAECE8; --ok-row:#EDF6F1; --on-sem:#FFFFFF;
+  --sel:#0C245B; --sel-ol:rgba(12,36,91,.28); --h1a:#0C245B; --h1b:#2E5A8F; --arc:.34;
+  --shadow:0 1px 2px rgba(21,24,33,.06), 0 10px 26px -14px rgba(21,24,33,.22);
+  --lbw:126px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1015; --surface:#171A21; --surface2:#1F232B;
+    --ink:#ECEFF4; --ink2:#CBD1DC; --muted:#9BA2B1; --line:#333945; --line2:#252A33;
+    --accent:#8FA9C9; --accent-soft:#1B2740; --on-accent:#0B1220; --brand-or:#F0844F;
+    --ok:#6BC9A6; --warn:#E3B45E; --bad:#E68A75;
+    --ok-bg:#1B3A31; --warn-bg:#3C3218; --bad-bg:#3B2520;
+    --band-work:#255045; --band-edge:#4C4022; --band-off:#242935;
+    --warn-row:#2A2415; --bad-row:#2C1D1A; --ok-row:#172A25; --on-sem:#12141A;
+    --sel:#8FA9C9; --sel-ol:rgba(143,169,201,.32); --h1a:#DEE8F4; --h1b:#8FA9C9; --arc:.45;
+    --shadow:0 1px 2px rgba(0,0,0,.45), 0 10px 26px -14px rgba(0,0,0,.75);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1015; --surface:#171A21; --surface2:#1F232B;
+  --ink:#ECEFF4; --ink2:#CBD1DC; --muted:#9BA2B1; --line:#333945; --line2:#252A33;
+  --accent:#8FA9C9; --accent-soft:#1B2740; --on-accent:#0B1220; --brand-or:#F0844F;
+  --ok:#6BC9A6; --warn:#E3B45E; --bad:#E68A75;
+  --ok-bg:#1B3A31; --warn-bg:#3C3218; --bad-bg:#3B2520;
+  --band-work:#255045; --band-edge:#4C4022; --band-off:#242935;
+  --warn-row:#2A2415; --bad-row:#2C1D1A; --ok-row:#172A25; --on-sem:#12141A;
+  --sel:#8FA9C9; --sel-ol:rgba(143,169,201,.32); --h1a:#DEE8F4; --h1b:#8FA9C9; --arc:.45;
+  --shadow:0 1px 2px rgba(0,0,0,.45), 0 10px 26px -14px rgba(0,0,0,.75);
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic UI",system-ui,sans-serif;
+  font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
+body[data-lang="en"]{font-family:Archivo,"Zen Kaku Gothic New",system-ui,-apple-system,sans-serif;line-height:1.6}
+.wrap{max-width:1060px;margin:0 auto;padding:30px 20px 80px;display:flex;flex-direction:column;gap:20px}
+.mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+
+header.hd{display:flex;gap:18px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
+.hd-txt{display:flex;flex-direction:column;gap:14px;min-width:0}
+.eyebrow{font-family:Archivo,system-ui,sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.17em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:Archivo,system-ui,sans-serif;font-size:34px;font-weight:700;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.sub{color:var(--ink2);font-size:14.5px;max-width:62ch;margin:0}
+.langsw{display:inline-flex;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px;flex-shrink:0}
+.langsw button{border:none;background:transparent;border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;color:var(--muted)}
+.langsw button:hover{color:var(--accent)}
+.langsw button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent)}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}
+.card-hd{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 18px;border-bottom:1px solid var(--line2);flex-wrap:wrap}
+.card-title{font-family:Archivo,system-ui,sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.card-note{font-size:12.5px;color:var(--muted)}
+.card-bd{padding:16px 18px}
+
+input,select,button,textarea{font-family:inherit;font-size:14px;color:var(--ink)}
+input[type=date],select{background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+input[type=date]{font-family:"IBM Plex Mono",monospace}
+button{cursor:pointer;background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:8px 12px;transition:border-color .15s,color .15s,background .15s}
+button:hover{border-color:var(--accent);color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.btn-primary{background:var(--accent);color:var(--on-accent);border-color:var(--accent);font-weight:600}
+label.lb{font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-family:Archivo,system-ui,sans-serif}
+
+.cond{display:flex;gap:20px;flex-wrap:wrap;align-items:flex-end;padding-bottom:14px;border-bottom:1px solid var(--line2)}
+.field{display:flex;flex-direction:column;gap:5px}
+.quick{display:flex;gap:6px;flex-wrap:wrap}
+.quick button{font-size:12.5px;padding:6px 11px;border-radius:999px}
+
+.sec-lb{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:14px 0 9px}
+.sec-lb .t{font-size:12.5px;font-weight:700;letter-spacing:.06em;color:var(--ink2)}
+.sec-lb button{font-size:12.5px;padding:5px 10px}
+
+.loc-list{display:flex;flex-direction:column;gap:7px}
+.loc{display:grid;grid-template-columns:auto 1fr auto auto;gap:12px;align-items:center;
+  padding:9px 12px;background:var(--surface2);border:1px solid var(--line2);border-radius:10px}
+.loc.base{border-color:var(--accent);background:var(--accent-soft)}
+.rad{display:flex;align-items:center;justify-content:center}
+.rad input{width:16px;height:16px;accent-color:var(--accent);cursor:pointer;margin:0}
+.loc-id{display:flex;flex-direction:column;gap:1px;min-width:0}
+.loc-name{font-weight:500;font-size:14.5px;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.cc{font-family:Archivo,sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.08em;padding:2px 5px;border-radius:4px;background:var(--ink);color:var(--surface)}
+.loc.base .cc{background:var(--accent);color:var(--on-accent)}
+.loc-meta{font-size:12.5px;color:var(--muted);display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+.dst{font-size:11px;font-weight:700;padding:1px 6px;border-radius:4px;background:var(--warn-bg);color:var(--warn)}
+.dst.std{background:transparent;color:var(--muted);border:1px solid var(--line)}
+.wins{display:none;gap:14px;align-items:center;grid-column:2/4}
+.show-win .wins{display:flex;flex-wrap:wrap}
+.win{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted)}
+.win select{padding:5px 7px;font-size:13px;font-family:"IBM Plex Mono",monospace;background:var(--surface);width:84px}
+.x{background:transparent;border:1px solid transparent;color:var(--muted);padding:4px 9px;border-radius:6px;font-size:17px;line-height:1}
+.x:hover{color:var(--bad);border-color:var(--line);background:var(--surface)}
+
+.picker{margin-top:12px;border:1px solid var(--line);border-radius:10px;padding:12px;background:var(--surface2)}
+.picker input[type=search]{width:100%;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:9px 11px;font-size:14.5px}
+.opts{max-height:270px;overflow-y:auto;margin-top:10px;display:flex;flex-direction:column;gap:3px}
+.opt-g{font-size:11.5px;font-weight:700;letter-spacing:.1em;color:var(--muted);padding:9px 4px 3px;font-family:Archivo,sans-serif;text-transform:uppercase}
+.opt{display:flex;justify-content:space-between;gap:10px;align-items:center;width:100%;text-align:left;
+  background:transparent;border:1px solid transparent;padding:7px 9px;border-radius:7px;font-size:14px}
+.opt:hover,.opt:focus-visible{background:var(--surface);border-color:var(--accent)}
+.opt .o-off{font-size:12.5px;color:var(--muted);font-family:"IBM Plex Mono",monospace;white-space:nowrap}
+.opt .o-n{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pk-none{padding:14px 4px;color:var(--muted);font-size:13.5px}
+
+.res{display:flex;flex-direction:column;gap:12px}
+.slot{border:1px solid var(--line);border-radius:11px;background:var(--surface);overflow:hidden}
+.slot.hero{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.slot.on{border-color:var(--accent)}
+.slot-hd{display:flex;align-items:center;gap:11px;padding:11px 15px;background:var(--surface2);border-bottom:1px solid var(--line2);flex-wrap:wrap;cursor:pointer}
+.slot.hero .slot-hd{background:var(--accent-soft)}
+.rank{font-family:Archivo,sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.09em;color:var(--muted)}
+.slot.hero .rank{color:var(--accent)}
+.slot-base{font-family:"IBM Plex Mono",monospace;font-size:17px;font-weight:600;font-variant-numeric:tabular-nums}
+.slot.hero .slot-base{font-size:22px}
+.verdict{font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px}
+.v-ok{background:var(--ok-bg);color:var(--ok)}
+.v-near{background:var(--warn-bg);color:var(--warn)}
+.v-bad{background:var(--bad-bg);color:var(--bad)}
+.gap{flex:1}
+.score{font-size:12.5px;color:var(--muted);font-family:"IBM Plex Mono",monospace;background:transparent;border:1px solid transparent;padding:3px 7px;border-radius:6px}
+.score:hover{border-color:var(--line);color:var(--accent)}
+#scorehelp{font-family:inherit;font-size:12.5px}
+.slot-bd{padding:3px 15px 10px}
+.tl{width:100%;border-collapse:collapse}
+.tl td{padding:8px 0;border-bottom:1px solid var(--line2);font-size:14px;vertical-align:top}
+.tl tr:last-child td{border-bottom:none}
+.tl .c-name{color:var(--ink)}
+.nm-sub{color:var(--muted);font-size:13px}
+.tl .c-why{font-size:12.5px;color:var(--muted);padding-left:16px}
+.tl .c-time{font-family:"IBM Plex Mono",monospace;font-weight:500;text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:8px;vertical-align:1px}
+.d-ok{background:var(--ok)}.d-near{background:var(--warn)}.d-bad{background:var(--bad)}
+.why-ok{color:var(--ok)}.why-near{color:var(--warn)}.why-bad{color:var(--bad)}
+.tag{font-size:10.5px;font-weight:700;padding:1px 5px;border-radius:4px;margin-left:7px;background:var(--surface2);color:var(--muted);border:1px solid var(--line)}
+.tag.we{background:var(--bad-bg);color:var(--bad);border-color:transparent}
+.tag.dy{background:var(--accent-soft);color:var(--accent);border-color:transparent}
+.slot-ft{font-size:12.5px;color:var(--muted);padding:0 15px 12px;display:flex;gap:8px;flex-wrap:wrap;align-items:baseline}
+.slot-ft b{color:var(--ink2);font-weight:700}
+.acts{display:flex;gap:8px;padding:0 15px 14px;flex-wrap:wrap;align-items:center}
+.acts button,.acts a{font-size:13px;padding:8px 13px;border-radius:8px;text-decoration:none;
+  border:1px solid var(--line);background:var(--surface2);color:var(--ink2);display:inline-block}
+.acts a:hover,.acts button:hover{border-color:var(--accent);color:var(--accent)}
+.acts a.pri,.acts button.pri{background:var(--accent);color:var(--on-accent);border-color:var(--accent);font-weight:600}
+.acts a.pri:hover,.acts button.pri:hover{filter:brightness(1.1);color:var(--on-accent);border-color:var(--accent)}
+.warnbar{padding:11px 18px;background:var(--warn-bg);color:var(--warn);font-size:13.5px;border-bottom:1px solid var(--line2);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.warnbar.we{background:var(--bad-bg);color:var(--bad)}
+.warnbar.dst{background:var(--accent-soft);color:var(--accent)}
+.warnbar .wbtn{font-size:12.5px;padding:5px 11px;border-radius:999px;background:var(--surface);border-color:currentColor;color:inherit}
+.chk{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;color:var(--ink2);cursor:pointer;padding:8px 0}
+.chk input{width:17px;height:17px;accent-color:var(--accent);margin:0;cursor:pointer}
+.ft-we{color:var(--bad)}
+.bf-priv{font-size:12.5px;color:var(--ink2);max-width:64ch;margin:0 auto 8px;line-height:1.7}
+.bf-mail{color:var(--accent);text-decoration:none}
+.bf-mail:hover{text-decoration:underline}
+details.more>summary,details.dstd>summary{cursor:pointer;font-size:13.5px;color:var(--accent);padding:9px 2px;list-style:none;display:flex;align-items:center;gap:7px}
+details>summary::-webkit-details-marker{display:none}
+details.more>summary::before,details.dstd>summary::before{content:"\25B8";font-size:11px}
+details[open].more>summary::before,details[open].dstd>summary::before{content:"\25BE"}
+.more-in{display:flex;flex-direction:column;gap:12px;padding-top:4px}
+.howto{font-size:13px;color:var(--ink2);background:var(--surface2);border:1px solid var(--line2);border-radius:9px;padding:12px 14px;margin-bottom:12px}
+.howto ul{margin:7px 0 0;padding-left:19px}
+.howto li{margin:3px 0}
+.empty{padding:26px;text-align:center;color:var(--muted)}
+
+.chart-wrap{position:relative}
+.chart{overflow-x:auto;scrollbar-width:thin;padding-bottom:4px}
+.chart-inner{min-width:640px}
+.fade{position:absolute;top:0;bottom:8px;width:34px;pointer-events:none;opacity:0;transition:opacity .18s;z-index:3}
+.fade.l{left:calc(var(--lbw) + 10px);background:linear-gradient(90deg,var(--surface),rgba(255,255,255,0))}
+.fade.r{right:0;background:linear-gradient(270deg,var(--surface),rgba(255,255,255,0))}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .fade.l{background:linear-gradient(90deg,var(--surface),rgba(0,0,0,0))}
+ :root:not([data-theme="light"]) .fade.r{background:linear-gradient(270deg,var(--surface),rgba(0,0,0,0))}}
+:root[data-theme="dark"] .fade.l{background:linear-gradient(90deg,var(--surface),rgba(0,0,0,0))}
+:root[data-theme="dark"] .fade.r{background:linear-gradient(270deg,var(--surface),rgba(0,0,0,0))}
+.fade.on{opacity:1}
+.crow{display:grid;grid-template-columns:var(--lbw) 1fr;gap:10px;align-items:center;margin-bottom:5px}
+.crow-lb{position:sticky;left:0;z-index:2;align-self:stretch;background:var(--surface);font-size:13px;color:var(--ink2);
+  text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:2px 6px 2px 0}
+.crow-lb .off{font-size:12px;color:var(--muted);font-family:"IBM Plex Mono",monospace}
+.band{display:grid;grid-template-columns:repeat(48,1fr);height:28px;border-radius:5px;overflow:hidden;border:1px solid var(--line2);cursor:crosshair}
+.cell{background:var(--band-off)}
+.cell.work{background:var(--band-work)}
+.cell.edge{background:var(--band-edge)}
+.cell.sel{background-image:linear-gradient(var(--sel-ol),var(--sel-ol));box-shadow:inset 0 -3px 0 var(--sel)}
+.axis{display:grid;grid-template-columns:repeat(48,1fr);margin-top:2px}
+.axis span{font-size:11px;color:var(--muted);font-family:"IBM Plex Mono",monospace;grid-column:span 4;border-left:1px solid var(--line);padding-left:3px}
+.legend{display:flex;gap:15px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-top:13px;align-items:center}
+.sw{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-2px;border:1px solid var(--line)}
+
+.dstlist{display:flex;flex-direction:column;gap:7px}
+.dstlist{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:8px 20px;align-items:baseline}
+.dstrow{display:contents;font-size:13px}
+.dstrow .who{white-space:nowrap}
+.dstrow .who{color:var(--ink2)}
+.dstrow .when{color:var(--muted);font-family:"IBM Plex Mono",monospace;font-size:12.5px}
+.dsth{font-size:12.5px;font-weight:700;color:var(--ink2);margin:14px 0 6px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:26px;background:var(--ink);color:var(--bg);
+  padding:10px 17px;border-radius:8px;font-size:13.5px;opacity:0;pointer-events:none;transition:opacity .2s,bottom .2s;z-index:30}
+.toast.on{opacity:1;bottom:34px}
+
+@media (max-width:680px){
+  :root{--lbw:104px}
+  .fade.l{left:calc(var(--lbw) + 8px)}
+  .wrap{padding:22px 14px 70px;gap:16px}
+  header.hd{gap:12px}
+  .loc{grid-template-columns:auto 1fr auto;row-gap:8px}
+  .loc .sp{display:none}
+  .loc .x{grid-row:1;grid-column:3;align-self:start}
+  .wins{grid-column:1/-1}
+  .crow{gap:8px}
+  .crow-lb{font-size:12px}
+  .dstlist{display:flex;flex-direction:column;gap:11px}
+  .dstrow{display:block}
+  .dstrow .who,.dstrow .when{display:block}
+  .slot.hero .slot-base{font-size:20px}
+  .nm-sub{display:none}
+  .acts{gap:7px}
+  .acts button,.acts a{font-size:13px;padding:12px 14px;min-height:44px;display:inline-flex;align-items:center}
+  .quick button{min-height:44px;padding:10px 15px;font-size:13.5px}
+  .sec-lb button{min-height:44px;padding:10px 14px}
+  .x{min-width:44px;min-height:44px}
+  details.more>summary,details.dstd>summary{min-height:44px;padding:12px 2px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* ---- BeyondBridge&Co. brand chrome ---- */
+.masthead{position:relative;overflow:hidden;color:#fff;
+  background:linear-gradient(168deg,#0C245B 0%,#0C245B 46%,#0A1C42 100%)}
+.topbar{background:transparent;color:#fff;width:100%;position:relative;z-index:2;
+  border-bottom:1px solid rgba(255,255,255,.13)}
+.hero{position:relative}
+.hero-in{max-width:1340px;margin:0 auto;padding:34px 26px 92px;position:relative;z-index:1;
+  display:flex;flex-direction:column;gap:16px}
+.topbar-in{max-width:none;margin:0;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  padding:11px max(20px, calc((100% - 1060px)/2 + 20px)) 11px 26px}
+.wordmark{font-family:Archivo,system-ui,sans-serif;font-size:15px;font-weight:700;letter-spacing:.02em;
+  color:#fff;text-decoration:none;white-space:nowrap}
+.wordmark:hover{color:#F3C4B0}
+.wordmark .amp{color:#E8612A}
+.topbar .langsw{background:transparent;border-color:rgba(255,255,255,.38);padding:2px}
+.topbar .langsw button{color:rgba(255,255,255,.8);padding:5px 13px;font-size:12.5px}
+.topbar .langsw button:hover{color:#fff}
+.topbar .langsw button[aria-pressed="true"]{background:#fff;color:#0C245B}
+h1{display:flex;align-items:baseline;gap:.26em;flex-wrap:wrap;font-size:54px;line-height:1;
+  letter-spacing:-.035em;color:#fff;padding:0;margin:0}
+.t-a{font-weight:700}
+.t-b{font-weight:500;color:#93AFD2;letter-spacing:-.025em}
+.hero .eyebrow{color:rgba(255,255,255,.62)}
+.hero .sub{color:rgba(255,255,255,.78);max-width:60ch;font-size:15px;line-height:1.85}
+.title-block{position:relative;padding-left:21px}
+.title-block::before{content:"";position:absolute;left:0;top:4px;bottom:4px;width:3px;border-radius:2px;
+  background:linear-gradient(180deg,#E8612A 0%,#E8612A 55%,rgba(232,97,42,0) 100%)}
+.title-block .eyebrow{margin-bottom:11px}
+.hd-arc{position:absolute;right:max(26px, calc((100% - 1340px)/2 + 26px));bottom:-58px;
+  width:330px;height:165px;border:3px solid #E8612A;border-bottom:0;border-radius:165px 165px 0 0;
+  opacity:.5;pointer-events:none;z-index:0}
+.hd-arc::before,.hd-arc::after{content:"";position:absolute;bottom:-58px;width:3px;height:58px;background:#E8612A;opacity:.55}
+.hd-arc::before{left:-3px}
+.hd-arc::after{right:-3px}
+.wrap{position:relative;z-index:2;margin-top:-58px}
+@media (max-width:680px){
+  h1{font-size:30px;gap:.2em}
+  .title-block{padding-left:15px}
+  .title-block .eyebrow{margin-bottom:8px}
+  .hero-in{padding:22px 14px 58px;gap:12px}
+  .hero .sub{font-size:14px;line-height:1.78}
+  .wrap{margin-top:-42px}
+}
+@media (max-width:1000px){ .hd-arc{display:none} }
+.card-title{display:inline-block;padding-bottom:4px;border-bottom:2px solid var(--brand-or)}
+@media (max-width:680px){ .topbar-in{padding:10px 14px 10px 12px} }
+
+/* ---- logo ---- */
+.wordmark{display:inline-flex;align-items:center;line-height:0}
+.wordmark img{height:26px;width:auto;display:block}
+.wordmark:hover{opacity:.85}
+@media (max-width:680px){ .wordmark img{height:21px} }
+
+/* ---- selected-time panel ---- */
+.selp{margin-top:14px;border:1px solid var(--accent);border-radius:11px;background:var(--surface);overflow:hidden}
+.selp:empty{display:none}
+.selp-hd{display:flex;align-items:center;gap:11px;padding:10px 15px;background:var(--accent-soft);
+  border-bottom:1px solid var(--line2);flex-wrap:wrap}
+.selp-lb{font-family:Archivo,sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--accent)}
+.selp-time{font-family:"IBM Plex Mono",monospace;font-size:21px;font-weight:600;font-variant-numeric:tabular-nums}
+.selp .tl{padding:0}
+.selp table.tl{margin:2px 15px;width:calc(100% - 30px)}
+.selp .slot-ft{padding:0 15px 10px}
+.selp .acts{padding:0 15px 13px}
+
+/* ---- setup extras ---- */
+.field.grow{flex:1 1 220px;min-width:180px}
+#mtitle{width:100%;background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:14px}
+.setup-acts{margin-top:14px;padding-top:13px;border-top:1px solid var(--line2)}
+.setup-acts button{font-size:12.5px;padding:7px 12px;border-radius:8px}
+#reset.armed{border-color:var(--bad);color:var(--bad)}
+h2.card-title{margin:0;font-weight:600}
+@media (max-width:680px){
+  .cond{gap:13px}
+  .field.wecell{width:100%}
+  .field.wecell .lb.spacer{display:none}
+  .field.grow{flex-basis:100%}
+  .selp-time{font-size:19px}
+}
+
+/* ---- per-region severity encoding ---- */
+.tl .c-name{padding-left:11px;border-left:4px solid transparent}
+.tl tr.r-ok .c-name{border-left-color:var(--ok)}
+.tl tr.r-near .c-name{border-left-color:var(--warn)}
+.tl tr.r-bad .c-name{border-left-color:var(--bad)}
+.tl tr.r-near td{background:var(--warn-row)}
+.tl tr.r-bad td{background:var(--bad-row)}
+.tl .c-time{padding-right:11px}
+.tl .c-time .tv{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;font-weight:500}
+.st{display:inline-block;margin-top:5px;font-size:11px;font-weight:700;padding:2px 9px;
+  border-radius:999px;letter-spacing:.02em;white-space:nowrap}
+.st-ok{background:var(--ok-bg);color:var(--ok)}
+.st-near{background:var(--warn);color:var(--on-sem)}
+.st-bad{background:var(--bad);color:var(--on-sem)}
+
+/* ---- two-column layout on wide screens ---- */
+.cols{display:flex;flex-direction:column;gap:20px}
+.col-l,.col-r{display:flex;flex-direction:column;gap:20px;min-width:0}
+@media (min-width:1120px){
+  .wrap{max-width:1340px}
+  .cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(430px,510px);gap:20px;align-items:start}
+  .sub{max-width:70ch}
+}
+
+/* ---- wide layout: chart+answer left, option list right ---- */
+@media (min-width:1120px){
+  .cols{grid-template-columns:minmax(0,1fr) minmax(310px,370px)}
+  .col-l{position:static}
+  .col-r{position:sticky;top:14px;max-height:calc(100vh - 28px);overflow-y:auto;scrollbar-width:thin}
+  .col-l .chart-inner{min-width:0}
+  .col-r .card-bd{padding:14px}
+}
+/* ---- compact option rows ---- */
+#res{gap:9px}
+.mini{display:flex;flex-direction:column;align-items:flex-start;gap:6px;width:100%;text-align:left;
+  padding:11px 13px;border:1px solid var(--line);border-radius:10px;background:var(--surface);
+  font-family:inherit;transition:border-color .14s,background .14s}
+.mini:hover{border-color:var(--accent);background:var(--surface2)}
+.mini.on{border-color:var(--accent);background:var(--accent-soft);box-shadow:0 0 0 1px var(--accent)}
+.mini-top{display:flex;align-items:baseline;gap:9px;width:100%}
+.mini-time{font-family:"IBM Plex Mono",monospace;font-size:18px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink)}
+.mini.on .rank{color:var(--accent)}
+.mini-dots{margin-left:auto;display:inline-flex;gap:4px;align-self:center}
+.md{width:9px;height:9px;border-radius:50%;display:inline-block}
+.mini .verdict{font-size:11.5px;padding:2px 9px}
+.mini-out{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.mini.on .mini-out{color:var(--ink2)}
+
+/* ---- answer panel now lives in its own card ---- */
+#selpanel.selp{margin-top:0;border:none;border-radius:0;background:transparent;overflow:visible}
+#selpanel .selp-hd{background:transparent;border-bottom:1px solid var(--line2);padding:0 0 10px;margin-bottom:2px}
+#selpanel table.tl{margin:0;width:100%}
+#selpanel .slot-ft{padding:10px 0 0}
+#selpanel .acts{padding:13px 0 0}
+#selpanel .selp-time{font-size:26px}
+@media (max-width:680px){ #selpanel .selp-time{font-size:22px} }
+
+#warnbar:empty{display:none}
+#warnbar{display:flex;flex-direction:column;gap:8px}
+#warnbar .warnbar{border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow)}
+.md{width:10px;height:10px}
+.lbrow{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+.hint{font-size:12px;color:var(--muted);font-weight:400;letter-spacing:0;text-transform:none;
+  font-family:"Zen Kaku Gothic New","Hiragino Sans",system-ui,sans-serif}
+body[data-lang="en"] .hint{font-family:inherit}
+
+/* ---- footer band ---- */
+.wrap{padding-bottom:44px}
+.site-foot{background:#0C245B;color:rgba(255,255,255,.78);font-size:12.5px}
+.sf-in{max-width:1340px;margin:0 auto;padding:34px 26px 24px;display:grid;
+  grid-template-columns:minmax(220px,1fr) minmax(0,1fr) minmax(0,1.25fr);gap:26px 44px}
+.sf-brand{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.sf-logo{height:24px;width:auto;display:block}
+.sf-logolink{line-height:0}
+.sf-logolink:hover{opacity:.85}
+.sf-brandline{margin:0;font-size:13px;line-height:1.75;color:rgba(255,255,255,.92);max-width:34ch;font-weight:500}
+.sf-tag{margin:0;font-size:12.5px;line-height:1.8;color:rgba(255,255,255,.66);max-width:34ch}
+.sf-mail{font-size:12.5px;color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.32);padding-bottom:2px}
+.sf-mail:hover{color:#E8612A;border-color:#E8612A}
+.sf-block{min-width:0}
+.sf-h{margin:0 0 9px;font-family:Archivo,system-ui,sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:#fff;position:relative;padding-bottom:8px}
+.sf-h::after{content:"";position:absolute;left:0;bottom:0;width:30px;height:3px;background:#E8612A}
+.sf-p{margin:0;font-size:12.5px;line-height:1.85;color:rgba(255,255,255,.72)}
+.sf-bar{max-width:1340px;margin:0 auto;padding:14px 26px 24px;display:flex;justify-content:space-between;
+  gap:14px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.16);font-size:11.5px;color:rgba(255,255,255,.55)}
+.sf-build{font-family:"IBM Plex Mono",monospace;letter-spacing:.02em}
+@media (max-width:900px){
+  .sf-in{grid-template-columns:1fr;gap:24px;padding:28px 16px 18px}
+  .sf-bar{padding:14px 16px 26px}
+  .sf-tag,.sf-brandline{max-width:none}
+}
+.cell:focus-visible{outline:2px solid var(--accent);outline-offset:1px;position:relative;z-index:4}
+.tolist-row{margin-top:14px;padding-top:13px;border-top:1px solid var(--line2)}
+.tolist-row button{font-size:13px;padding:10px 14px;border-radius:8px;width:100%}
+@media (min-width:1120px){ .tolist-row{display:none} }
+/* ---- header site link ---- */
+.sitelink{margin-left:16px;margin-right:auto;padding-left:16px;border-left:1px solid rgba(255,255,255,.24);
+  color:rgba(255,255,255,.78);text-decoration:none;font-size:13px;font-family:Archivo,system-ui,sans-serif;
+  font-weight:500;white-space:nowrap;display:inline-flex;align-items:center;gap:5px}
+.sitelink::after{content:"\2197";font-size:12px;opacity:.75}
+.sitelink:hover{color:#fff}
+@media (max-width:820px){ .sitelink{display:none} }
+
+/* ---- closing block ---- */
+.outro{position:relative;overflow:hidden;
+  background:radial-gradient(130% 150% at 100% 0%, var(--accent-soft) 0%, rgba(0,0,0,0) 58%), var(--surface)}
+.outro-in{padding:34px 30px 32px;display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,460px);
+  gap:48px;align-items:center}
+.outro-left{min-width:0;display:flex;flex-direction:column;align-items:flex-start}
+.outro-logolink{line-height:0;display:inline-block;margin-bottom:20px}
+.outro-logolink:hover{opacity:.85}
+.outro-logo{width:84px;height:84px;display:block;box-shadow:0 0 0 1px var(--line)}
+.outro-h{margin:0 0 12px;font-family:Archivo,system-ui,sans-serif;font-size:26px;font-weight:700;
+  letter-spacing:-.02em;line-height:1.25;color:var(--accent)}
+.outro-text{margin:0 0 14px;font-size:13.5px;line-height:1.95;color:var(--ink2);max-width:100%}
+.outro-text2{margin-bottom:0}
+.outro-grid{display:flex;flex-direction:column;gap:16px;width:100%}
+.ocard{display:flex;align-items:center;gap:17px;padding:20px 22px;border:1px solid var(--line);
+  border-radius:12px;background:rgba(255,255,255,0);text-decoration:none;min-width:0;
+  transition:border-color .16s,background .16s,transform .16s}
+.ocard:hover{border-color:var(--brand-or);background:var(--surface);transform:translateY(-1px)}
+.ocard-ic{flex-shrink:0;width:46px;height:46px;border-radius:50%;border:1.5px solid var(--brand-or);
+  color:var(--brand-or);display:inline-flex;align-items:center;justify-content:center}
+.ocard-ic svg{width:21px;height:21px;display:block}
+.ocard-b{display:flex;flex-direction:column;gap:6px;min-width:0}
+.ocard-lb{font-family:Archivo,system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--brand-or);line-height:1}
+.ocard-v{font-size:15px;font-weight:600;color:var(--ink);line-height:1.45;overflow-wrap:anywhere}
+@media (prefers-reduced-motion:reduce){ .ocard:hover{transform:none} }
+@media (max-width:900px){
+  .outro-in{grid-template-columns:1fr;gap:24px;align-items:start}
+  .outro-grid{gap:14px}
+}
+@media (max-width:680px){
+  .outro-in{padding:24px 16px 22px}
+  .outro-logo{width:74px;height:74px}
+  .outro-logolink{margin-bottom:16px}
+  .outro-h{font-size:22px}
+  .outro-text{margin-bottom:12px}
+  .outro-text2{margin-bottom:0}
+  .ocard{padding:16px 16px;gap:14px}
+  .ocard-ic{width:42px;height:42px}
+  .ocard-v{font-size:14.5px}
+}
+</style>
+
+</head>
+<body>
+<div class="masthead">
+<div class="topbar">
+  <div class="topbar-in">
+    <a class="wordmark" href="https://beyondbridge.co/" id="tb-logo" target="_blank" rel="noopener"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgd2lkdGg9Ijc3MC44MiIgaGVpZ2h0PSIxMDAiIHZpZXdCb3g9IjAgMCA1NTQuOTkgNzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIj48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPip7c3Ryb2tlLWxpbmVqb2luOiByb3VuZDsgc3Ryb2tlLWxpbmVjYXA6IGJ1dHR9PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImJiY2xvZ28tbG9nby1sb2NrdXAtYWljb21wYW55LWRhcmstZmlndXJlXzEiPjxnIGlkPSJiYmNsb2dvLWxvZ28tbG9ja3VwLWFpY29tcGFueS1kYXJrLXBhdGNoXzEiPjxwYXRoIGQ9Ik0gMCA3MiBMIDU1NC45OSA3MiBMIDU1NC45OSAwIEwgMCAwIEwgMCA3MiB6CiIgc3R5bGU9ImZpbGw6IG5vbmU7IG9wYWNpdHk6IDAiLz48L2c+PGcgaWQ9ImJiY2xvZ28tbG9nby1sb2NrdXAtYWljb21wYW55LWRhcmstYXhlc18xIj48ZyBpZD0iYmJjbG9nby1sb2dvLWxvY2t1cC1haWNvbXBhbnktZGFyay1wYXRjaF8yIj48cGF0aCBkPSJNIDE4IDY4LjQgTCA1NCA2OC40IFEgNjguNCA2OC40IDY4LjQgNTQgTCA2OC40IDE4IFEgNjguNCAzLjYgNTQgMy42IEwgMTggMy42IFEgMy42IDMuNiAzLjYgMTggTCAzLjYgNTQgUSAzLjYgNjguNCAxOCA2OC40IHoKIiBjbGlwLXBhdGg9InVybCgjYmJjbG9nby1sb2dvLWxvY2t1cC1haWNvbXBhbnktZGFyay1wYTA0MDc3MzIwMCkiIHN0eWxlPSJmaWxsOiAjZTg2MTJhIi8+PC9nPjxnIGlkPSJiYmNsb2dvLWxvZ28tbG9ja3VwLWFpY29tcGFueS1kYXJrLXBhdGNoXzMiPjxwYXRoIGQ9Ik0gMzEuOTUgMjkuMjkgUSAzNC40MSAyOS4yOSAzNS42OCAyOC4yMSBRIDM2Ljk1IDI3LjEzIDM2Ljk1IDI1LjAzIFEgMzYuOTUgMjIuOTQgMzUuNjggMjEuODUgUSAzNC40MSAyMC43NiAzMS45NSAyMC43NiBMIDI2LjIgMjAuNzYgTCAyNi4yIDI5LjI5IEwgMzEuOTUgMjkuMjkgegpNIDMyLjMgNDYuOTIgUSAzNS40MyA0Ni45MiAzNy4wMSA0NS42IFEgMzguNiA0NC4yOCAzOC42IDQxLjYxIFEgMzguNiAzOC45OCAzNy4wMyAzNy42OCBRIDM1LjQ3IDM2LjM2IDMyLjMgMzYuMzYgTCAyNi4yIDM2LjM2IEwgMjYuMiA0Ni45MiBMIDMyLjMgNDYuOTIgegpNIDQxLjk3IDMyLjQyIFEgNDUuMzIgMzMuNCA0Ny4xNSAzNi4wMiBRIDQ4Ljk5IDM4LjY0IDQ4Ljk5IDQyLjQ0IFEgNDguOTkgNDguMjcgNDUuMDUgNTEuMTQgUSA0MS4xMSA1NCAzMy4wNiA1NCBMIDE1LjgxIDU0IEwgMTUuODEgMTMuNjggTCAzMS40MSAxMy42OCBRIDM5LjgxIDEzLjY4IDQzLjU4IDE2LjIyIFEgNDcuMzUgMTguNzYgNDcuMzUgMjQuMzUgUSA0Ny4zNSAyNy4yOSA0NS45NyAyOS4zNiBRIDQ0LjU5IDMxLjQyIDQxLjk3IDMyLjQyIHoKIiBjbGlwLXBhdGg9InVybCgjYmJjbG9nby1sb2dvLWxvY2t1cC1haWNvbXBhbnktZGFyay1wYTA0MDc3MzIwMCkiIHN0eWxlPSJmaWxsOiAjZmZmZmZmIi8+PC9nPjxnIGlkPSJiYmNsb2dvLWxvZ28tbG9ja3VwLWFpY29tcGFueS1kYXJrLXBhdGNoXzQiPjxwYXRoIGQ9Ik0gNTUuNDQgNjguNzYgTCA2MyA2OC43NiBRIDY4Ljc2IDY4Ljc2IDY4Ljc2IDYzIEwgNjguNzYgNTUuNDQgUSA2OC43NiA0OS42OCA2MyA0OS42OCBMIDU1LjQ0IDQ5LjY4IFEgNDkuNjggNDkuNjggNDkuNjggNTUuNDQgTCA0OS42OCA2MyBRIDQ5LjY4IDY4Ljc2IDU1LjQ0IDY4Ljc2IHoKIiBjbGlwLXBhdGg9InVybCgjYmJjbG9nby1sb2dvLWxvY2t1cC1haWNvbXBhbnktZGFyay1wYTA0MDc3MzIwMCkiIHN0eWxlPSJmaWxsOiAjMGMyNDViOyBzdHJva2U6ICNmZmZmZmY7IHN0cm9rZS13aWR0aDogMy42Ii8+PC9nPjxnIGlkPSJiYmNsb2dvLWxvZ28tbG9ja3VwLWFpY29tcGFueS1kYXJrLXBhdGNoXzUiPjxwYXRoIGQ9Ik0gMTMwIDQ0LjE0IEMgMTMwIDQwLjIxIDEyNy44OCAzNy4wOSAxMjMuMzkgMzQuNDcgQyAxMjcuMzMgMzEuOTYgMTI4Ljg2IDI5LjY2IDEyOC44NiAyNi4yNyBDIDEyOC44NiAyMC42NCAxMjQuMTYgMTUuNzcgMTE1Ljg1IDE1Ljc3IEwgOTguMDggMTUuNzcgTCA5OC4wOCA1NS42MiBMIDExNi4wMSA1NS42MiBDIDEyNS4zMSA1NS42MiAxMzAgNTAuNyAxMzAgNDQuMTQgegpNIDEyMC45OCAyNy4xNSBDIDEyMC45OCAzMC4wNCAxMTguOTcgMzEuNjIgMTE1LjE5IDMxLjYyIEwgMTA2LjI4IDMxLjYyIEwgMTA2LjI4IDIyLjYgTCAxMTUuMTkgMjIuNiBDIDExOC45NyAyMi42IDEyMC45OCAyNC4xOSAxMjAuOTggMjcuMTUgegpNIDEyMi4xNCA0My42NSBDIDEyMi4xNCA0Ni45OSAxMjAuMDYgNDguNzkgMTE2LjA2IDQ4Ljc5IEwgMTA2LjI4IDQ4Ljc5IEwgMTA2LjI4IDM4LjQ2IEwgMTE2LjA2IDM4LjQ2IEMgMTIwLjA2IDM4LjQ2IDEyMi4xNCA0MC4yNyAxMjIuMTQgNDMuNjUgegoiIGNsaXAtcGF0aD0idXJsKCNiYmNsb2dvLWxvZ28tbG9ja3VwLWFpY29tcGFueS1kYXJrLXBhMDQwNzczMjAwKSIgc3R5bGU9ImZpbGw6ICNmZmZmZmYiLz48L2c+PGcgaWQ9ImJiY2xvZ28tbG9nby1sb2NrdXAtYWljb21wYW55LWRhcmstcGF0Y2hfNiI+PHBhdGggZD0iTSAxNzAuNTkgNDQuMTQgQyAxNzAuNTkgNDAuMjEgMTY4LjQ3IDM3LjA5IDE2My45OCAzNC40NyBDIDE2Ny45MiAzMS45NiAxNjkuNDUgMjkuNjYgMTY5LjQ1IDI2LjI3IEMgMTY5LjQ1IDIwLjY0IDE2NC43NSAxNS43NyAxNTYuNDQgMTUuNzcgTCAxMzguNjcgMTUuNzcgTCAxMzguNjcgNTUuNjIgTCAxNTYuNiA1NS42MiBDIDE2NS45IDU1LjYyIDE3MC41OSA1MC43IDE3MC41OSA0NC4xNCB6Ck0gMTYxLjU3IDI3LjE1IEMgMTYxLjU3IDMwLjA0IDE1OS41NiAzMS42MiAxNTUuNzggMzEuNjIgTCAxNDYuODcgMzEuNjIgTCAxNDYuODcgMjIuNiBMIDE1NS43OCAyMi42IEMgMTU5LjU2IDIyLjYgMTYxLjU3IDI0LjE5IDE2MS41NyAyNy4xNSB6Ck0gMTYyLjczIDQzLjY1IEMgMTYyLjczIDQ2Ljk5IDE2MC42NSA0OC43OSAxNTYuNjUgNDguNzkgTCAxNDYuODcgNDguNzkgTCAxNDYuODcgMzguNDYgTCAxNTYuNjUgMzguNDYgQyAxNjAuNjUgMzguNDYgMTYyLjczIDQwLjI3IDE2Mi43MyA0My42NSB6CiIgY2xpcC1wYXRoPSJ1cmwoI2JiY2xvZ28tbG9nby1sb2NrdXAtYWljb21wYW55LWRhcmstcGEwNDA3NzMyMDApIiBzdHlsZT0iZmlsbDogI2ZmZmZmZiIvPjwvZz48ZyBpZD0iYmJjbG9nby1sb2dvLWxvY2t1cC1haWNvbXBhbnktZGFyay1wYXRjaF83Ij48cGF0aCBkPSJNIDIxMi43MiA1NS42MiBMIDIwNS45OSA0Ny4yIEMgMjA4LjA3IDQ0LjY5IDIwOS43MSA0MC4yNyAyMDkuNzEgMzYuMTEgTCAyMDkuNzEgMzUuMjQgTCAyMDMuNTMgMzUuMjQgTCAyMDMuNTMgMzUuNzggQyAyMDMuNTMgMzguMTMgMjAzLjEgMzkuNzcgMjAxLjg5IDQyLjA3IEwgMTk1LjU1IDM0LjE5IEMgMjAwLjQyIDMwLjg2IDIwMS45NSAyOC41MSAyMDEuOTUgMjQuNTggQyAyMDEuOTUgMTkuNDkgMTk4LjA2IDE2LjEgMTkyLjIyIDE2LjEgQyAxODYuMzcgMTYuMSAxODEuODkgMjAuMDkgMTgxLjg5IDI1LjIzIEMgMTgxLjgzIDI3LjI1IDE4Mi42NSAyOS4yMiAxODQuMTggMzEuMDIgTCAxODUuNzEgMzIuODkgQyAxODUuODIgMzIuOTkgMTg2LjA0IDMzLjI2IDE4Ni4zNyAzMy43MSBDIDE3OS45NyAzNy4wNCAxNzcuNzkgMzkuOTMgMTc3Ljc5IDQ1LjA4IEMgMTc3Ljc5IDUyLjE4IDE4Mi45OCA1Ni44OCAxOTAuNzQgNTYuODggQyAxOTQuNDYgNTYuODggMTk2Ljk3IDU1LjkgMjAxLjQgNTIuNTcgTCAyMDMuOTIgNTUuNjIgTCAyMTIuNzIgNTUuNjIgegpNIDE5Ny40MSA0Ny41NCBDIDE5NC44NCA0OS41IDE5Mi41NSA1MC41NCAxOTAuODUgNTAuNTQgQyAxODcuOSA1MC41NCAxODUuMDYgNDcuNDIgMTg1LjA2IDQ0LjE0IEMgMTg1LjA2IDQyLjM5IDE4NS44OCA0MC43IDE4Ny40IDM5Ljc3IEwgMTg5Ljk4IDM4LjE4IEwgMTk3LjQxIDQ3LjU0IHoKTSAxOTUuMzkgMjUuMjMgQyAxOTUuMzkgMjcuMTUgMTk0LjMgMjguNzMgMTkyLjExIDI5LjkzIEMgMTg5LjM4IDI2LjQ5IDE4OS4xIDI2LjA1IDE4OS4xIDI0LjY5IEMgMTg5LjEgMjMuMTUgMTkwLjQxIDIyLjA2IDE5Mi4yNyAyMi4wNiBDIDE5NC4yNCAyMi4wNiAxOTUuMzkgMjMuMjEgMTk1LjM5IDI1LjIzIHoKIiBjbGlwLXBhdGg9InVybCgjYmJjbG9nby1sb2dvLWxvY2t1cC1haWNvbXBhbnktZGFyay1wYTA0MDc3MzIwMCkiIHN0eWxlPSJmaWxsOiAjZTg2MTJhIi8+PC9nPjxnIGlkPSJiYmNsb2dvLWxvZ28tbG9ja3VwLWFpY29tcGFueS1kYXJrLXBhdGNoXzgiPjxwYXRoIGQ9Ik0gMjUyLjc1IDQyLjAxIEwgMjQ0Ljc3IDQyLjAxIEMgMjQ0LjI3IDQ3LjEgMjQxLjA1IDQ5LjM5IDIzNS45NiA0OS4zOSBDIDIyOS42MyA0OS4zOSAyMjUuOTEgNDQuNTMgMjI1LjkxIDM1LjgzIEMgMjI1LjkxIDI3LjA0IDIyOS43OSAyMi4xMiAyMzYuMjQgMjIuMTIgQyAyNDAuNjcgMjIuMTIgMjQzLjU3IDI0LjE0IDI0NC43NyAyOS4yNyBMIDI1Mi41OSAyOS4yNyBDIDI1MS44OCAyMC4wOSAyNDQuOTMgMTUuMTIgMjM1Ljk2IDE1LjEyIEMgMjI0LjcxIDE1LjEyIDIxNy43MSAyMi44MiAyMTcuNzEgMzUuNzIgQyAyMTcuNzEgNDguNTIgMjI0LjY1IDU2LjI4IDIzNS43NSA1Ni4yOCBDIDI0NS42NCA1Ni4yOCAyNTIuMjUgNTEuMTQgMjUyLjc1IDQyLjAxIHoKIiBjbGlwLXBhdGg9InVybCgjYmJjbG9nby1sb2dvLWxvY2t1cC1haWNvbXBhbnktZGFyay1wYTA0MDc3MzIwMCkiIHN0eWxlPSJmaWxsOiAjZmZmZmZmIi8+PC9nPjxnIGlkPSJiYmNsb2dvLWxvZ28tbG9ja3VwLWFpY29tcGFueS1kYXJrLXBhdGNoXzkiPjxwYXRoIGQ9Ik0gMjc0LjYxIDYwLjY5IEwgMjc1LjkxIDYwLjY5IEwgMjc1LjkxIDExLjMxIEwgMjc0LjYxIDExLjMxIHoKIiBjbGlwLXBhdGg9InVybCgjYmJjbG9nby1sb2dvLWxvY2t1cC1haWNvbXBhbnktZGFyay1wYTA0MDc3MzIwMCkiIHN0eWxlPSJmaWxsOiAjYWFiMmM2Ii8+PC9nPjxnIGlkPSJiYmNsb2dvLWxvZ28tbG9ja3VwLWFpY29tcGFueS1kYXJrLXBhdGNoXzEwIj48cGF0aCBkPSJNIDMxMy40NSA0NS43NiBMIDMwNi43IDI2LjI0IEwgMzAyLjI2IDI2LjI0IEwgMjk1LjMyIDQ1Ljc2IEwgMjk5LjQyIDQ1Ljc2IEwgMzAwLjczIDQxLjgyIEwgMzA4LjA0IDQxLjgyIEwgMzA5LjMzIDQ1Ljc2IEwgMzEzLjQ1IDQ1Ljc2IHoKTSAzMDYuOTQgMzguNDcgTCAzMDEuODYgMzguNDcgTCAzMDQuNCAzMC44NCBMIDMwNi45NCAzOC40NyB6CiIgY2xpcC1wYXRoPSJ1cmwoI2JiY2xvZ28tbG9nby1sb2NrdXAtYWljb21wYW55LWRhcmstcGEwNDA3NzMyMDApIiBzdHlsZT0iZmlsbDogI2FhYjJjNiIvPjwvZz48ZyBpZD0iYmJjbG9nby1sb2dvLWxvY2t1cC1haWNvbXBhbnktZGFyay1wYXRjaF8xMSI+PHBhdGggZD0iTSAzMjguMjQgNDUuNzYgTCAzMjguMjQgMjYuMjQgTCAzMjQuMjIgMjYuMjQgTCAzMjQuMjIgNDUuNzYgTCAzMjguMjQgNDUuNzYgegoiIGNsaXAtcGF0aD0idXJsKCNiYmNsb2dvLWxvZ28tbG9ja3VwLWFpY29tcGFueS1kYXJrLXBhMDQwNzczMjAwKSIgc3R5bGU9ImZpbGw6ICNhYWIyYzYiLz48L2c+PGcgaWQ9ImJiY2xvZ28tbG9nby1sb2NrdXAtYWljb21wYW55LWRhcmstcGF0Y2hfMTIiPjxwYXRoIGQ9Ik0gMzcyLjg3IDM5LjA5IEwgMzY4Ljk3IDM5LjA5IEMgMzY4LjcyIDQxLjU4IDM2Ny4xNCA0Mi43IDM2NC42NSA0Mi43IEMgMzYxLjU1IDQyLjcgMzU5LjczIDQwLjMyIDM1OS43MyAzNi4wNiBDIDM1OS43MyAzMS43NiAzNjEuNjMgMjkuMzUgMzY0Ljc5IDI5LjM1IEMgMzY2Ljk2IDI5LjM1IDM2OC4zOCAzMC4zNCAzNjguOTcgMzIuODUgTCAzNzIuNzkgMzIuODUgQyAzNzIuNDUgMjguMzUgMzY5LjA1IDI1LjkyIDM2NC42NSAyNS45MiBDIDM1OS4xNCAyNS45MiAzNTUuNzEgMjkuNjkgMzU1LjcxIDM2LjAxIEMgMzU1LjcxIDQyLjI4IDM1OS4xMSA0Ni4wOCAzNjQuNTUgNDYuMDggQyAzNjkuMzkgNDYuMDggMzcyLjYzIDQzLjU2IDM3Mi44NyAzOS4wOSB6CiIgY2xpcC1wYXRoPSJ1cmwoI2JiY2xvZ28tbG9nby1sb2NrdXAtYWljb21wYW55LWRhcmstcGEwNDA3NzMyMDApIiBzdHlsZT0iZmlsbDogI2FhYjJjNiIvPjwvZz48ZyBpZD0iYmJjbG9nby1sb2dvLWxvY2t1cC1haWNvbXBhbnktZGFyay1wYXRjaF8xMyI+PHBhdGggZD0iTSA0MDIuMzEgMzYuMTIgQyA0MDIuMzEgMzAuMjMgMzk4LjU5IDI1LjkyIDM5Mi44OSAyNS45MiBDIDM4Ny4xNiAyNS45MiAzODMuNTIgMzAuMzkgMzgzLjUyIDM1Ljk5IEMgMzgzLjUyIDQxLjgyIDM4Ny4xOSA0Ni4wOCAzOTIuOTEgNDYuMDggQyAzOTguNTkgNDYuMDggNDAyLjMxIDQxLjgyIDQwMi4zMSAzNi4xMiB6Ck0gMzk4LjMgMzYuMDkgQyAzOTguMyA0MC4wOCAzOTYuMTMgNDIuNjUgMzkyLjkxIDQyLjY1IEMgMzg5LjY3IDQyLjY1IDM4Ny41MyA0MC4wOCAzODcuNTMgMzUuOTkgQyAzODcuNTMgMzIuMDUgMzg5LjY3IDI5LjM1IDM5Mi45MSAyOS4zNSBDIDM5Ni4yMSAyOS4zNSAzOTguMyAzMi4wMiAzOTguMyAzNi4wOSB6CiIgY2xpcC1wYXRoPSJ1cmwoI2JiY2xvZ28tbG9nby1sb2NrdXAtYWljb21wYW55LWRhcmstcGEwNDA3NzMyMDApIiBzdHlsZT0iZmlsbDogI2FhYjJjNiIvPjwvZz48ZyBpZD0iYmJjbG9nby1sb2dvLWxvY2t1cC1haWNvbXBhbnktZGFyay1wYXRjaF8xNCI+PHBhdGggZD0iTSA0MzIuNjQgNDUuNzYgTCA0MzIuNjQgMjYuMjQgTCA0MjYuNTkgMjYuMjQgTCA0MjMuMTYgNDEuNzcgTCA0MTkuNjMgMjYuMjQgTCA0MTMuNjMgMjYuMjQgTCA0MTMuNjMgNDUuNzYgTCA0MTcuNjUgNDUuNzYgTCA0MTcuNjUgMzAuNTUgTCA0MjEuMTYgNDUuNzYgTCA0MjUuMTcgNDUuNzYgTCA0MjguNjIgMzAuNTUgTCA0MjguNjIgNDUuNzYgTCA0MzIuNjQgNDUuNzYgegoiIGNsaXAtcGF0aD0idXJsKCNiYmNsb2dvLWxvZ28tbG9ja3VwLWFpY29tcGFueS1kYXJrLXBhMDQwNzczMjAwKSIgc3R5bGU9ImZpbGw6ICNhYWIyYzYiLz48L2c+PGcgaWQ9ImJiY2xvZ28tbG9nby1sb2NrdXAtYWljb21wYW55LWRhcmstcGF0Y2hfMTUiPjxwYXRoIGQ9Ik0gNDU5LjcgMzIuMjkgQyA0NTkuNyAyOC4zOCA0NTcuNDggMjYuMjQgNDUzLjQxIDI2LjI0IEwgNDQ0Ljc5IDI2LjI0IEwgNDQ0Ljc5IDQ1Ljc2IEwgNDQ4LjggNDUuNzYgTCA0NDguOCAzOC44IEwgNDUzLjgxIDM4LjggQyA0NTcuNCAzOC44IDQ1OS43IDM2LjI1IDQ1OS43IDMyLjI5IHoKTSA0NTUuNjkgMzIuNTMgQyA0NTUuNjkgMzQuNTEgNDU0LjY5IDM1LjQ1IDQ1Mi41NSAzNS40NSBMIDQ0OC44IDM1LjQ1IEwgNDQ4LjggMjkuNTggTCA0NTIuNTUgMjkuNTggQyA0NTQuNjkgMjkuNTggNDU1LjY5IDMwLjUyIDQ1NS42OSAzMi41MyB6CiIgY2xpcC1wYXRoPSJ1cmwoI2JiY2xvZ28tbG9nby1sb2NrdXAtYWljb21wYW55LWRhcmstcGEwNDA3NzMyMDApIiBzdHlsZT0iZmlsbDogI2FhYjJjNiIvPjwvZz48ZyBpZD0iYmJjbG9nby1sb2dvLWxvY2t1cC1haWNvbXBhbnktZGFyay1wYXRjaF8xNiI+PHBhdGggZD0iTSA0ODguMDEgNDUuNzYgTCA0ODEuMjcgMjYuMjQgTCA0NzYuODIgMjYuMjQgTCA0NjkuODkgNDUuNzYgTCA0NzMuOTkgNDUuNzYgTCA0NzUuMyA0MS44MiBMIDQ4Mi42MSA0MS44MiBMIDQ4My44OSA0NS43NiBMIDQ4OC4wMSA0NS43NiB6Ck0gNDgxLjUxIDM4LjQ3IEwgNDc2LjQyIDM4LjQ3IEwgNDc4Ljk3IDMwLjg0IEwgNDgxLjUxIDM4LjQ3IHoKIiBjbGlwLXBhdGg9InVybCgjYmJjbG9nby1sb2dvLWxvY2t1cC1haWNvbXBhbnktZGFyay1wYTA0MDc3MzIwMCkiIHN0eWxlPSJmaWxsOiAjYWFiMmM2Ii8+PC9nPjxnIGlkPSJiYmNsb2dvLWxvZ28tbG9ja3VwLWFpY29tcGFueS1kYXJrLXBhdGNoXzE3Ij48cGF0aCBkPSJNIDUxNC44IDQ1Ljc2IEwgNTE0LjggMjYuMjQgTCA1MTAuNzkgMjYuMjQgTCA1MTAuNzkgMzkuNTIgTCA1MDMuMDUgMjYuMjQgTCA0OTguOTMgMjYuMjQgTCA0OTguOTMgNDUuNzYgTCA1MDIuOTQgNDUuNzYgTCA1MDIuOTQgMzIuMjYgTCA1MTAuNzkgNDUuNzYgTCA1MTQuOCA0NS43NiB6CiIgY2xpcC1wYXRoPSJ1cmwoI2JiY2xvZ28tbG9nby1sb2NrdXAtYWljb21wYW55LWRhcmstcGEwNDA3NzMyMDApIiBzdHlsZT0iZmlsbDogI2FhYjJjNiIvPjwvZz48ZyBpZD0iYmJjbG9nby1sb2dvLWxvY2t1cC1haWNvbXBhbnktZGFyay1wYXRjaF8xOCI+PHBhdGggZD0iTSA1NDIuMzkgMjYuMjQgTCA1MzcuODkgMjYuMjQgTCA1MzQuMTcgMzQuODYgTCA1MzAuMTggMjYuMjQgTCA1MjUuNzEgMjYuMjQgTCA1MzIuMTkgMzguNTMgTCA1MzIuMTkgNDUuNzYgTCA1MzYuMiA0NS43NiBMIDUzNi4yIDM4LjUzIEwgNTQyLjM5IDI2LjI0IHoKIiBjbGlwLXBhdGg9InVybCgjYmJjbG9nby1sb2dvLWxvY2t1cC1haWNvbXBhbnktZGFyay1wYTA0MDc3MzIwMCkiIHN0eWxlPSJmaWxsOiAjYWFiMmM2Ii8+PC9nPjwvZz48L2c+PGRlZnM+PGNsaXBQYXRoIGlkPSJiYmNsb2dvLWxvZ28tbG9ja3VwLWFpY29tcGFueS1kYXJrLXBhMDQwNzczMjAwIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iNTU0Ljk5IiBoZWlnaHQ9IjcyIi8+PC9jbGlwUGF0aD48L2RlZnM+PC9zdmc+" alt="BB&amp;C AI COMPANY" height="26"></a>
+    <a class="sitelink" href="https://beyondbridge.co/" id="tb-site" target="_blank" rel="noopener"><span>BeyondBridge &amp; Co.</span></a>
+    <div class="langsw" role="group" aria-label="Language">
+      <button type="button" data-lang="ja">日本語</button>
+      <button type="button" data-lang="en">English</button>
+    </div>
+  </div>
+</div>
+<div class="hero">
+  <div class="hero-in">
+    <div class="title-block">
+      <div class="eyebrow">Cross border scheduling</div>
+      <h1><span class="t-a">Bridge</span><span class="t-b">Hours</span></h1>
+    </div>
+    <p class="sub" id="sub"></p>
+  </div>
+  <div class="hd-arc" aria-hidden="true"></div>
+</div>
+</div>
+<div class="wrap">
+  <section class="card">
+    <div class="card-hd"><h2 class="card-title" id="t-cond"></h2><span class="card-note" id="tzhint"></span></div>
+    <div class="card-bd">
+      <div class="cond">
+        <div class="field"><label class="lb" for="date" id="lb-date"></label><input type="date" id="date"></div>
+        <div class="field"><label class="lb" for="dur" id="lb-dur"></label><select id="dur"></select></div>
+        <div class="field">
+          <label class="lb" id="lb-shift"></label>
+          <div class="quick">
+            <button data-shift="-1" type="button" id="b-prev"></button>
+            <button data-shift="1" type="button" id="b-next"></button>
+            <button data-shift="7" type="button" id="b-week"></button>
+            <button id="today" type="button"></button>
+            <button id="nextwd" type="button"></button>
+          </div>
+        </div>
+        <div class="field wecell">
+          <label class="lb spacer">&nbsp;</label>
+          <label class="chk"><input type="checkbox" id="incwe"><span id="lb-incwe"></span></label>
+        </div>
+        <div class="field grow">
+          <div class="lbrow"><label class="lb" for="mtitle" id="lb-title"></label><span class="hint" id="hint-title"></span></div>
+          <input type="text" id="mtitle" maxlength="120" autocomplete="off" aria-describedby="hint-title">
+        </div>
+      </div>
+      <div class="sec-lb">
+        <span class="t" id="t-parts"></span>
+        <div class="quick">
+          <button id="wintoggle" type="button" aria-pressed="false"></button>
+          <button id="addtoggle" type="button" aria-expanded="false"></button>
+        </div>
+      </div>
+      <div class="loc-list" id="locs"></div>
+      <div class="picker" id="picker" hidden>
+        <input type="search" id="q" autocomplete="off">
+        <div class="opts" id="opts"></div>
+      </div>
+      <div class="card-note" id="basehint" style="margin-top:10px"></div>
+      <div class="quick setup-acts"><button id="share" type="button"></button><button id="reset" type="button"></button></div>
+    </div>
+  </section>
+
+  <div class="cols">
+  <div class="col-l">
+  <div id="warnbar"></div>
+  <section class="card">
+    <div class="card-hd">
+      <h2 class="card-title" id="t-sel"></h2>
+      <span class="card-note"><button class="score" id="scorehelp" type="button" aria-expanded="false"></button></span>
+    </div>
+    <div class="card-bd"><div id="howto" hidden></div><div class="selp" id="selpanel"></div>
+      <div class="tolist-row"><button id="tolist" type="button"></button></div></div>
+  </section>
+  <section class="card">
+    <div class="card-hd"><h2 class="card-title" id="t-chart"></h2><span class="card-note" id="axisnote"></span></div>
+    <div class="card-bd">
+      <div class="quick" style="margin-bottom:11px"><button id="jump" type="button"></button></div>
+      <div class="chart-wrap">
+        <div class="fade l" id="fadeL"></div><div class="fade r" id="fadeR"></div>
+        <div class="chart" id="chartScroll"><div class="chart-inner" id="chart"></div></div>
+      </div>
+      <div class="legend">
+        <span><i class="sw" style="background:var(--band-work)"></i><span id="lg1"></span></span>
+        <span><i class="sw" style="background:var(--band-edge)"></i><span id="lg2"></span></span>
+        <span><i class="sw" style="background:var(--band-off)"></i><span id="lg3"></span></span>
+        <span id="lg4"></span>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <div class="col-r">
+  <section class="card">
+    <div class="card-hd"><h2 class="card-title" id="t-res"></h2><span class="card-note" id="listnote"></span></div>
+    <div class="card-bd"><div class="res" id="res"></div></div>
+  </section>
+  </div>
+  </div>
+
+  <section class="card">
+    <div class="card-bd" style="padding-top:12px;padding-bottom:12px">
+      <details class="dstd">
+        <summary id="dstsum"></summary>
+        <div style="padding-top:6px">
+          <div class="dsth" id="dsth1"></div><div id="dstnow" class="dstlist"></div>
+          <div class="dsth" id="dsth2"></div><div id="dstnext" class="dstlist"></div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="card outro">
+    <div class="outro-in">
+      <div class="outro-left">
+      <a class="outro-logolink" href="https://beyondbridge.co/" target="_blank" rel="noopener" aria-label="BeyondBridge &amp; Co.">
+        <img class="outro-logo" src="data:image/png;base64,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" alt="BeyondBridge &amp; Co." width="88" height="88">
+      </a>
+      <h2 class="outro-h" id="outro-h"></h2>
+      <p class="outro-text" id="outro-text"></p>
+      <p class="outro-text outro-text2" id="outro-text2"></p>
+      </div>
+      <div class="outro-grid">
+        <a class="ocard" href="https://beyondbridge.co/" target="_blank" rel="noopener">
+          <span class="ocard-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="8.6"/><path d="M3.4 12h17.2"/><path d="M12 3.4c2.6 2.7 2.6 14.5 0 17.2"/><path d="M12 3.4c-2.6 2.7-2.6 14.5 0 17.2"/></svg></span>
+          <span class="ocard-b"><span class="ocard-lb" id="ey-company"></span><span class="ocard-v">beyondbridge.co</span></span>
+        </a>
+        <a class="ocard" href="mailto:info@beyondbridge.co">
+          <span class="ocard-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.2" y="5.4" width="17.6" height="13.2" rx="2.2"/><path d="M3.8 7.1 12 13l8.2-5.9"/></svg></span>
+          <span class="ocard-b"><span class="ocard-lb" id="ey-contact"></span><span class="ocard-v">info@beyondbridge.co</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div>
+<div class="toast" id="toast"></div>
+<footer class="site-foot">
+  <div class="sf-in">
+    <div class="sf-brand">
+      <a class="sf-logolink" href="https://beyondbridge.co/" target="_blank" rel="noopener"><img class="sf-logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgd2lkdGg9Ijc3MC44MiIgaGVpZ2h0PSIxMDAiIHZpZXdCb3g9IjAgMCA1NTQuOTkgNzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIj48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPip7c3Ryb2tlLWxpbmVqb2luOiByb3VuZDsgc3Ryb2tlLWxpbmVjYXA6IGJ1dHR9PC9zdHlsZT48L2RlZnM+PGcgaWQ9ImJiY2xvZ28tbG9nby1sb2NrdXAtYWljb21wYW55LWRhcmstZmlndXJlXzEiPjxnIGlkPSJiYmNsb2dvLWxvZ28tbG9ja3VwLWFpY29tcGFueS1kYXJrLXBhdGNoXzEiPjxwYXRoIGQ9Ik0gMCA3MiBMIDU1NC45OSA3MiBMIDU1NC45OSAwIEwgMCAwIEwgMCA3MiB6CiIgc3R5bGU9ImZpbGw6IG5vbmU7IG9wYWNpdHk6IDAiLz48L2c+PGcgaWQ9ImJiY2xvZ28tbG9nby1sb2NrdXAtYWljb21wYW55LWRhcmstYXhlc18xIj48ZyBpZD0iYmJjbG9nby1sb2dvLWxvY2t1cC1haWNvbXBhbnktZGFyay1wYXRjaF8yIj48cGF0aCBkPSJNIDE4IDY4LjQgTCA1NCA2OC40IFEgNjguNCA2OC40IDY4LjQgNTQgTCA2OC40IDE4IFEgNjguNCAzLjYgNTQgMy42IEwgMTggMy42IFEgMy42IDMuNiAzLjYgMTggTCAzLjYgNTQgUSAzLjYgNjguNCAxOCA2OC40IHoKIiBjbGlwLXBhdGg9InVybCgjYmJjbG9nby1sb2dvLWxvY2t1cC1haWNvbXBhbnktZGFyay1wYTA0MDc3MzIwMCkiIHN0eWxlPSJmaWxsOiAjZTg2MTJhIi8+PC9nPjxnIGlkPSJiYmNsb2dvLWxvZ28tbG9ja3VwLWFpY29tcGFueS1kYXJrLXBhdGNoXzMiPjxwYXRoIGQ9Ik0gMzEuOTUgMjkuMjkgUSAzNC40MSAyOS4yOSAzNS42OCAyOC4yMSBRIDM2Ljk1IDI3LjEzIDM2Ljk1IDI1LjAzIFEgMzYuOTUgMjIuOTQgMzUuNjggMjEuODUgUSAzNC40MSAyMC43NiAzMS45NSAyMC43NiBMIDI2LjIgMjAuNzYgTCAyNi4yIDI5LjI5IEwgMzEuOTUgMjkuMjkgegpNIDMyLjMgNDYuOTIgUSAzNS40MyA0Ni45MiAzNy4wMSA0NS42IFEgMzguNiA0NC4yOCAzOC42IDQxLjYxIFEgMzguNiAzOC45OCAzNy4wMyAzNy42OCBRIDM1LjQ3IDM2LjM2IDMyLjMgMzYuMzYgTCAyNi4yIDM2LjM2IEwgMjYuMiA0Ni45MiBMIDMyLjMgNDYuOTIgegpNIDQxLjk3IDMyLjQyIFEgNDUuMzIgMzMuNCA0Ny4xNSAzNi4wMiBRIDQ4Ljk5IDM4LjY0IDQ4Ljk5IDQyLjQ0IFEgNDguOTkgNDguMjcgNDUuMDUgNTEuMTQgUSA0MS4xMSA1NCAzMy4wNiA1NCBMIDE1LjgxIDU0IEwgMTUuODEgMTMuNjggTCAzMS40MSAxMy42OCBRIDM5LjgxIDEzLjY4IDQzLjU4IDE2LjIyIFEgNDcuMzUgMTguNzYgNDcuMzUgMjQuMzUgUSA0Ny4zNSAyNy4yOSA0NS45NyAyOS4zNiBRIDQ0LjU5IDMxLjQyIDQxLjk3IDMyLjQyIHoKIiBjbGlwLXBhdGg9InVybCgjYmJjbG9nby1sb2dvLWxvY2t1cC1haWNvbXBhbnktZGFyay1wYTA0MDc3MzIwMCkiIHN0eWxlPSJmaWxsOiAjZmZmZmZmIi8+PC9nPjxnIGlkPSJiYmNsb2dvLWxvZ28tbG9ja3VwLWFpY29tcGFueS1kYXJrLXBhdGNoXzQiPjxwYXRoIGQ9Ik0gNTUuNDQgNjguNzYgTCA2MyA2OC43NiBRIDY4Ljc2IDY4Ljc2IDY4Ljc2IDYzIEwgNjguNzYgNTUuNDQgUSA2OC43NiA0OS42OCA2MyA0OS42OCBMIDU1LjQ0IDQ5LjY4IFEgNDkuNjggNDkuNjggNDkuNjggNTUuNDQgTCA0OS42OCA2MyBRIDQ5LjY4IDY4Ljc2IDU1LjQ0IDY4Ljc2IHoKIiBjbGlwLXBhdGg9InVybCgjYmJjbG9nby1sb2dvLWxvY2t1cC1haWNvbXBhbnktZGFyay1wYTA0MDc3MzIwMCkiIHN0eWxlPSJmaWxsOiAjMGMyNDViOyBzdHJva2U6ICNmZmZmZmY7IHN0cm9rZS13aWR0aDogMy42Ii8+PC9nPjxnIGlkPSJiYmNsb2dvLWxvZ28tbG9ja3VwLWFpY29tcGFueS1kYXJrLXBhdGNoXzUiPjxwYXRoIGQ9Ik0gMTMwIDQ0LjE0IEMgMTMwIDQwLjIxIDEyNy44OCAzNy4wOSAxMjMuMzkgMzQuNDcgQyAxMjcuMzMgMzEuOTYgMTI4Ljg2IDI5LjY2IDEyOC44NiAyNi4yNyBDIDEyOC44NiAyMC42NCAxMjQuMTYgMTUuNzcgMTE1Ljg1IDE1Ljc3IEwgOTguMDggMTUuNzcgTCA5OC4wOCA1NS42MiBMIDExNi4wMSA1NS42MiBDIDEyNS4zMSA1NS42MiAxMzAgNTAuNyAxMzAgNDQuMTQgegpNIDEyMC45OCAyNy4xNSBDIDEyMC45OCAzMC4wNCAxMTguOTcgMzEuNjIgMTE1LjE5IDMxLjYyIEwgMTA2LjI4IDMxLjYyIEwgMTA2LjI4IDIyLjYgTCAxMTUuMTkgMjIuNiBDIDExOC45NyAyMi42IDEyMC45OCAyNC4xOSAxMjAuOTggMjcuMTUgegpNIDEyMi4xNCA0My42NSBDIDEyMi4xNCA0Ni45OSAxMjAuMDYgNDguNzkgMTE2LjA2IDQ4Ljc5IEwgMTA2LjI4IDQ4Ljc5IEwgMTA2LjI4IDM4LjQ2IEwgMTE2LjA2IDM4LjQ2IEMgMTIwLjA2IDM4LjQ2IDEyMi4xNCA0MC4yNyAxMjIuMTQgNDMuNjUgegoiIGNsaXAtcGF0aD0idXJsKCNiYmNsb2dvLWxvZ28tbG9ja3VwLWFpY29tcGFueS1kYXJrLXBhMDQwNzczMjAwKSIgc3R5bGU9ImZpbGw6ICNmZmZmZmYiLz48L2c+PGcgaWQ9ImJiY2xvZ28tbG9nby1sb2NrdXAtYWljb21wYW55LWRhcmstcGF0Y2hfNiI+PHBhdGggZD0iTSAxNzAuNTkgNDQuMTQgQyAxNzAuNTkgNDAuMjEgMTY4LjQ3IDM3LjA5IDE2My45OCAzNC40NyBDIDE2Ny45MiAzMS45NiAxNjkuNDUgMjkuNjYgMTY5LjQ1IDI2LjI3IEMgMTY5LjQ1IDIwLjY0IDE2NC43NSAxNS43NyAxNTYuNDQgMTUuNzcgTCAxMzguNjcgMTUuNzcgTCAxMzguNjcgNTUuNjIgTCAxNTYuNiA1NS42MiBDIDE2NS45IDU1LjYyIDE3MC41OSA1MC43IDE3MC41OSA0NC4xNCB6Ck0gMTYxLjU3IDI3LjE1IEMgMTYxLjU3IDMwLjA0IDE1OS41NiAzMS42MiAxNTUuNzggMzEuNjIgTCAxNDYuODcgMzEuNjIgTCAxNDYuODcgMjIuNiBMIDE1NS43OCAyMi42IEMgMTU5LjU2IDIyLjYgMTYxLjU3IDI0LjE5IDE2MS41NyAyNy4xNSB6Ck0gMTYyLjczIDQzLjY1IEMgMTYyLjczIDQ2Ljk5IDE2MC42NSA0OC43OSAxNTYuNjUgNDguNzkgTCAxNDYuODcgNDguNzkgTCAxNDYuODcgMzguNDYgTCAxNTYuNjUgMzguNDYgQyAxNjAuNjUgMzguNDYgMTYyLjczIDQwLjI3IDE2Mi43MyA0My42NSB6CiIgY2xpcC1wYXRoPSJ1cmwoI2JiY2xvZ28tbG9nby1sb2NrdXAtYWljb21wYW55LWRhcmstcGEwNDA3NzMyMDApIiBzdHlsZT0iZmlsbDogI2ZmZmZmZiIvPjwvZz48ZyBpZD0iYmJjbG9nby1sb2dvLWxvY2t1cC1haWNvbXBhbnktZGFyay1wYXRjaF83Ij48cGF0aCBkPSJNIDIxMi43MiA1NS42MiBMIDIwNS45OSA0Ny4yIEMgMjA4LjA3IDQ0LjY5IDIwOS43MSA0MC4yNyAyMDkuNzEgMzYuMTEgTCAyMDkuNzEgMzUuMjQgTCAyMDMuNTMgMzUuMjQgTCAyMDMuNTMgMzUuNzggQyAyMDMuNTMgMzguMTMgMjAzLjEgMzkuNzcgMjAxLjg5IDQyLjA3IEwgMTk1LjU1IDM0LjE5IEMgMjAwLjQyIDMwLjg2IDIwMS45NSAyOC41MSAyMDEuOTUgMjQuNTggQyAyMDEuOTUgMTkuNDkgMTk4LjA2IDE2LjEgMTkyLjIyIDE2LjEgQyAxODYuMzcgMTYuMSAxODEuODkgMjAuMDkgMTgxLjg5IDI1LjIzIEMgMTgxLjgzIDI3LjI1IDE4Mi42NSAyOS4yMiAxODQuMTggMzEuMDIgTCAxODUuNzEgMzIuODkgQyAxODUuODIgMzIuOTkgMTg2LjA0IDMzLjI2IDE4Ni4zNyAzMy43MSBDIDE3OS45NyAzNy4wNCAxNzcuNzkgMzkuOTMgMTc3Ljc5IDQ1LjA4IEMgMTc3Ljc5IDUyLjE4IDE4Mi45OCA1Ni44OCAxOTAuNzQgNTYuODggQyAxOTQuNDYgNTYuODggMTk2Ljk3IDU1LjkgMjAxLjQgNTIuNTcgTCAyMDMuOTIgNTUuNjIgTCAyMTIuNzIgNTUuNjIgegpNIDE5Ny40MSA0Ny41NCBDIDE5NC44NCA0OS41IDE5Mi41NSA1MC41NCAxOTAuODUgNTAuNTQgQyAxODcuOSA1MC41NCAxODUuMDYgNDcuNDIgMTg1LjA2IDQ0LjE0IEMgMTg1LjA2IDQyLjM5IDE4NS44OCA0MC43IDE4Ny40IDM5Ljc3IEwgMTg5Ljk4IDM4LjE4IEwgMTk3LjQxIDQ3LjU0IHoKTSAxOTUuMzkgMjUuMjMgQyAxOTUuMzkgMjcuMTUgMTk0LjMgMjguNzMgMTkyLjExIDI5LjkzIEMgMTg5LjM4IDI2LjQ5IDE4OS4xIDI2LjA1IDE4OS4xIDI0LjY5IEMgMTg5LjEgMjMuMTUgMTkwLjQxIDIyLjA2IDE5Mi4yNyAyMi4wNiBDIDE5NC4yNCAyMi4wNiAxOTUuMzkgMjMuMjEgMTk1LjM5IDI1LjIzIHoKIiBjbGlwLXBhdGg9InVybCgjYmJjbG9nby1sb2dvLWxvY2t1cC1haWNvbXBhbnktZGFyay1wYTA0MDc3MzIwMCkiIHN0eWxlPSJmaWxsOiAjZTg2MTJhIi8+PC9nPjxnIGlkPSJiYmNsb2dvLWxvZ28tbG9ja3VwLWFpY29tcGFueS1kYXJrLXBhdGNoXzgiPjxwYXRoIGQ9Ik0gMjUyLjc1IDQyLjAxIEwgMjQ0Ljc3IDQyLjAxIEMgMjQ0LjI3IDQ3LjEgMjQxLjA1IDQ5LjM5IDIzNS45NiA0OS4zOSBDIDIyOS42MyA0OS4zOSAyMjUuOTEgNDQuNTMgMjI1LjkxIDM1LjgzIEMgMjI1LjkxIDI3LjA0IDIyOS43OSAyMi4xMiAyMzYuMjQgMjIuMTIgQyAyNDAuNjcgMjIuMTIgMjQzLjU3IDI0LjE0IDI0NC43NyAyOS4yNyBMIDI1Mi41OSAyOS4yNyBDIDI1MS44OCAyMC4wOSAyNDQuOTMgMTUuMTIgMjM1Ljk2IDE1LjEyIEMgMjI0LjcxIDE1LjEyIDIxNy43MSAyMi44MiAyMTcuNzEgMzUuNzIgQyAyMTcuNzEgNDguNTIgMjI0LjY1IDU2LjI4IDIzNS43NSA1Ni4yOCBDIDI0NS42NCA1Ni4yOCAyNTIuMjUgNTEuMTQgMjUyLjc1IDQyLjAxIHoKIiBjbGlwLXBhdGg9InVybCgjYmJjbG9nby1sb2dvLWxvY2t1cC1haWNvbXBhbnktZGFyay1wYTA0MDc3MzIwMCkiIHN0eWxlPSJmaWxsOiAjZmZmZmZmIi8+PC9nPjxnIGlkPSJiYmNsb2dvLWxvZ28tbG9ja3VwLWFpY29tcGFueS1kYXJrLXBhdGNoXzkiPjxwYXRoIGQ9Ik0gMjc0LjYxIDYwLjY5IEwgMjc1LjkxIDYwLjY5IEwgMjc1LjkxIDExLjMxIEwgMjc0LjYxIDExLjMxIHoKIiBjbGlwLXBhdGg9InVybCgjYmJjbG9nby1sb2dvLWxvY2t1cC1haWNvbXBhbnktZGFyay1wYTA0MDc3MzIwMCkiIHN0eWxlPSJmaWxsOiAjYWFiMmM2Ii8+PC9nPjxnIGlkPSJiYmNsb2dvLWxvZ28tbG9ja3VwLWFpY29tcGFueS1kYXJrLXBhdGNoXzEwIj48cGF0aCBkPSJNIDMxMy40NSA0NS43NiBMIDMwNi43IDI2LjI0IEwgMzAyLjI2IDI2LjI0IEwgMjk1LjMyIDQ1Ljc2IEwgMjk5LjQyIDQ1Ljc2IEwgMzAwLjczIDQxLjgyIEwgMzA4LjA0IDQxLjgyIEwgMzA5LjMzIDQ1Ljc2IEwgMzEzLjQ1IDQ1Ljc2IHoKTSAzMDYuOTQgMzguNDcgTCAzMDEuODYgMzguNDcgTCAzMDQuNCAzMC44NCBMIDMwNi45NCAzOC40NyB6CiIgY2xpcC1wYXRoPSJ1cmwoI2JiY2xvZ28tbG9nby1sb2NrdXAtYWljb21wYW55LWRhcmstcGEwNDA3NzMyMDApIiBzdHlsZT0iZmlsbDogI2FhYjJjNiIvPjwvZz48ZyBpZD0iYmJjbG9nby1sb2dvLWxvY2t1cC1haWNvbXBhbnktZGFyay1wYXRjaF8xMSI+PHBhdGggZD0iTSAzMjguMjQgNDUuNzYgTCAzMjguMjQgMjYuMjQgTCAzMjQuMjIgMjYuMjQgTCAzMjQuMjIgNDUuNzYgTCAzMjguMjQgNDUuNzYgegoiIGNsaXAtcGF0aD0idXJsKCNiYmNsb2dvLWxvZ28tbG9ja3VwLWFpY29tcGFueS1kYXJrLXBhMDQwNzczMjAwKSIgc3R5bGU9ImZpbGw6ICNhYWIyYzYiLz48L2c+PGcgaWQ9ImJiY2xvZ28tbG9nby1sb2NrdXAtYWljb21wYW55LWRhcmstcGF0Y2hfMTIiPjxwYXRoIGQ9Ik0gMzcyLjg3IDM5LjA5IEwgMzY4Ljk3IDM5LjA5IEMgMzY4LjcyIDQxLjU4IDM2Ny4xNCA0Mi43IDM2NC42NSA0Mi43IEMgMzYxLjU1IDQyLjcgMzU5LjczIDQwLjMyIDM1OS43MyAzNi4wNiBDIDM1OS43MyAzMS43NiAzNjEuNjMgMjkuMzUgMzY0Ljc5IDI5LjM1IEMgMzY2Ljk2IDI5LjM1IDM2OC4zOCAzMC4zNCAzNjguOTcgMzIuODUgTCAzNzIuNzkgMzIuODUgQyAzNzIuNDUgMjguMzUgMzY5LjA1IDI1LjkyIDM2NC42NSAyNS45MiBDIDM1OS4xNCAyNS45MiAzNTUuNzEgMjkuNjkgMzU1LjcxIDM2LjAxIEMgMzU1LjcxIDQyLjI4IDM1OS4xMSA0Ni4wOCAzNjQuNTUgNDYuMDggQyAzNjkuMzkgNDYuMDggMzcyLjYzIDQzLjU2IDM3Mi44NyAzOS4wOSB6CiIgY2xpcC1wYXRoPSJ1cmwoI2JiY2xvZ28tbG9nby1sb2NrdXAtYWljb21wYW55LWRhcmstcGEwNDA3NzMyMDApIiBzdHlsZT0iZmlsbDogI2FhYjJjNiIvPjwvZz48ZyBpZD0iYmJjbG9nby1sb2dvLWxvY2t1cC1haWNvbXBhbnktZGFyay1wYXRjaF8xMyI+PHBhdGggZD0iTSA0MDIuMzEgMzYuMTIgQyA0MDIuMzEgMzAuMjMgMzk4LjU5IDI1LjkyIDM5Mi44OSAyNS45MiBDIDM4Ny4xNiAyNS45MiAzODMuNTIgMzAuMzkgMzgzLjUyIDM1Ljk5IEMgMzgzLjUyIDQxLjgyIDM4Ny4xOSA0Ni4wOCAzOTIuOTEgNDYuMDggQyAzOTguNTkgNDYuMDggNDAyLjMxIDQxLjgyIDQwMi4zMSAzNi4xMiB6Ck0gMzk4LjMgMzYuMDkgQyAzOTguMyA0MC4wOCAzOTYuMTMgNDIuNjUgMzkyLjkxIDQyLjY1IEMgMzg5LjY3IDQyLjY1IDM4Ny41MyA0MC4wOCAzODcuNTMgMzUuOTkgQyAzODcuNTMgMzIuMDUgMzg5LjY3IDI5LjM1IDM5Mi45MSAyOS4zNSBDIDM5Ni4yMSAyOS4zNSAzOTguMyAzMi4wMiAzOTguMyAzNi4wOSB6CiIgY2xpcC1wYXRoPSJ1cmwoI2JiY2xvZ28tbG9nby1sb2NrdXAtYWljb21wYW55LWRhcmstcGEwNDA3NzMyMDApIiBzdHlsZT0iZmlsbDogI2FhYjJjNiIvPjwvZz48ZyBpZD0iYmJjbG9nby1sb2dvLWxvY2t1cC1haWNvbXBhbnktZGFyay1wYXRjaF8xNCI+PHBhdGggZD0iTSA0MzIuNjQgNDUuNzYgTCA0MzIuNjQgMjYuMjQgTCA0MjYuNTkgMjYuMjQgTCA0MjMuMTYgNDEuNzcgTCA0MTkuNjMgMjYuMjQgTCA0MTMuNjMgMjYuMjQgTCA0MTMuNjMgNDUuNzYgTCA0MTcuNjUgNDUuNzYgTCA0MTcuNjUgMzAuNTUgTCA0MjEuMTYgNDUuNzYgTCA0MjUuMTcgNDUuNzYgTCA0MjguNjIgMzAuNTUgTCA0MjguNjIgNDUuNzYgTCA0MzIuNjQgNDUuNzYgegoiIGNsaXAtcGF0aD0idXJsKCNiYmNsb2dvLWxvZ28tbG9ja3VwLWFpY29tcGFueS1kYXJrLXBhMDQwNzczMjAwKSIgc3R5bGU9ImZpbGw6ICNhYWIyYzYiLz48L2c+PGcgaWQ9ImJiY2xvZ28tbG9nby1sb2NrdXAtYWljb21wYW55LWRhcmstcGF0Y2hfMTUiPjxwYXRoIGQ9Ik0gNDU5LjcgMzIuMjkgQyA0NTkuNyAyOC4zOCA0NTcuNDggMjYuMjQgNDUzLjQxIDI2LjI0IEwgNDQ0Ljc5IDI2LjI0IEwgNDQ0Ljc5IDQ1Ljc2IEwgNDQ4LjggNDUuNzYgTCA0NDguOCAzOC44IEwgNDUzLjgxIDM4LjggQyA0NTcuNCAzOC44IDQ1OS43IDM2LjI1IDQ1OS43IDMyLjI5IHoKTSA0NTUuNjkgMzIuNTMgQyA0NTUuNjkgMzQuNTEgNDU0LjY5IDM1LjQ1IDQ1Mi41NSAzNS40NSBMIDQ0OC44IDM1LjQ1IEwgNDQ4LjggMjkuNTggTCA0NTIuNTUgMjkuNTggQyA0NTQuNjkgMjkuNTggNDU1LjY5IDMwLjUyIDQ1NS42OSAzMi41MyB6CiIgY2xpcC1wYXRoPSJ1cmwoI2JiY2xvZ28tbG9nby1sb2NrdXAtYWljb21wYW55LWRhcmstcGEwNDA3NzMyMDApIiBzdHlsZT0iZmlsbDogI2FhYjJjNiIvPjwvZz48ZyBpZD0iYmJjbG9nby1sb2dvLWxvY2t1cC1haWNvbXBhbnktZGFyay1wYXRjaF8xNiI+PHBhdGggZD0iTSA0ODguMDEgNDUuNzYgTCA0ODEuMjcgMjYuMjQgTCA0NzYuODIgMjYuMjQgTCA0NjkuODkgNDUuNzYgTCA0NzMuOTkgNDUuNzYgTCA0NzUuMyA0MS44MiBMIDQ4Mi42MSA0MS44MiBMIDQ4My44OSA0NS43NiBMIDQ4OC4wMSA0NS43NiB6Ck0gNDgxLjUxIDM4LjQ3IEwgNDc2LjQyIDM4LjQ3IEwgNDc4Ljk3IDMwLjg0IEwgNDgxLjUxIDM4LjQ3IHoKIiBjbGlwLXBhdGg9InVybCgjYmJjbG9nby1sb2dvLWxvY2t1cC1haWNvbXBhbnktZGFyay1wYTA0MDc3MzIwMCkiIHN0eWxlPSJmaWxsOiAjYWFiMmM2Ii8+PC9nPjxnIGlkPSJiYmNsb2dvLWxvZ28tbG9ja3VwLWFpY29tcGFueS1kYXJrLXBhdGNoXzE3Ij48cGF0aCBkPSJNIDUxNC44IDQ1Ljc2IEwgNTE0LjggMjYuMjQgTCA1MTAuNzkgMjYuMjQgTCA1MTAuNzkgMzkuNTIgTCA1MDMuMDUgMjYuMjQgTCA0OTguOTMgMjYuMjQgTCA0OTguOTMgNDUuNzYgTCA1MDIuOTQgNDUuNzYgTCA1MDIuOTQgMzIuMjYgTCA1MTAuNzkgNDUuNzYgTCA1MTQuOCA0NS43NiB6CiIgY2xpcC1wYXRoPSJ1cmwoI2JiY2xvZ28tbG9nby1sb2NrdXAtYWljb21wYW55LWRhcmstcGEwNDA3NzMyMDApIiBzdHlsZT0iZmlsbDogI2FhYjJjNiIvPjwvZz48ZyBpZD0iYmJjbG9nby1sb2dvLWxvY2t1cC1haWNvbXBhbnktZGFyay1wYXRjaF8xOCI+PHBhdGggZD0iTSA1NDIuMzkgMjYuMjQgTCA1MzcuODkgMjYuMjQgTCA1MzQuMTcgMzQuODYgTCA1MzAuMTggMjYuMjQgTCA1MjUuNzEgMjYuMjQgTCA1MzIuMTkgMzguNTMgTCA1MzIuMTkgNDUuNzYgTCA1MzYuMiA0NS43NiBMIDUzNi4yIDM4LjUzIEwgNTQyLjM5IDI2LjI0IHoKIiBjbGlwLXBhdGg9InVybCgjYmJjbG9nby1sb2dvLWxvY2t1cC1haWNvbXBhbnktZGFyay1wYTA0MDc3MzIwMCkiIHN0eWxlPSJmaWxsOiAjYWFiMmM2Ii8+PC9nPjwvZz48L2c+PGRlZnM+PGNsaXBQYXRoIGlkPSJiYmNsb2dvLWxvZ28tbG9ja3VwLWFpY29tcGFueS1kYXJrLXBhMDQwNzczMjAwIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iNTU0Ljk5IiBoZWlnaHQ9IjcyIi8+PC9jbGlwUGF0aD48L2RlZnM+PC9zdmc+" alt="BB&amp;C AI COMPANY"></a>
+      <p class="sf-brandline" id="bf-brandline"></p>
+      <p class="sf-tag" id="bf-tag"></p>
+      <a class="sf-mail" id="bf-contact" href="mailto:info@beyondbridge.co"></a>
+    </div>
+    <div class="sf-block">
+      <h3 class="sf-h" id="foot-h1"></h3>
+      <p class="sf-p" id="foot-calc"></p>
+    </div>
+    <div class="sf-block">
+      <h3 class="sf-h" id="foot-h2"></h3>
+      <p class="sf-p" id="bf-priv"></p>
+    </div>
+  </div>
+  <div class="sf-bar">
+    <span>Copyright&copy; 2026 BEYONDBRIDGE&amp;CO. Pte. Ltd. All rights reserved</span>
+    <span class="sf-build">v1.22 &middot; 2026-08-30</span>
+  </div>
+</footer>
+</div>
+
+
+<script>
+"use strict";
+
+/* ================= 地域データ  [tz, 日本語名, コード, 検索キー, English] ================= */
+var DB=[
+ ["東アジア","East Asia",[
+  ["Asia/Tokyo","日本（東京）","JP","japan tokyo osaka nihon","Japan (Tokyo)"],
+  ["Asia/Seoul","韓国（ソウル）","KR","korea seoul kankoku","South Korea (Seoul)"],
+  ["Asia/Shanghai","中国（北京・上海）","CN","china beijing shanghai chugoku","China (Beijing, Shanghai)"],
+  ["Asia/Hong_Kong","香港","HK","hong kong hongkong honkon","Hong Kong"],
+  ["Asia/Taipei","台湾（台北）","TW","taiwan taipei","Taiwan (Taipei)"]
+ ]],
+ ["東南アジア・南アジア","Southeast & South Asia",[
+  ["Asia/Singapore","シンガポール","SG","singapore","Singapore"],
+  ["Asia/Bangkok","タイ（バンコク）","TH","thailand bangkok","Thailand (Bangkok)"],
+  ["Asia/Ho_Chi_Minh","ベトナム（ホーチミン・ハノイ）","VN","vietnam ho chi minh hanoi","Vietnam (Ho Chi Minh, Hanoi)"],
+  ["Asia/Kuala_Lumpur","マレーシア（クアラルンプール）","MY","malaysia kuala lumpur","Malaysia (Kuala Lumpur)"],
+  ["Asia/Jakarta","インドネシア（ジャカルタ）","ID","indonesia jakarta","Indonesia (Jakarta)"],
+  ["Asia/Makassar","インドネシア（バリ）","ID","indonesia bali makassar","Indonesia (Bali)"],
+  ["Asia/Manila","フィリピン（マニラ）","PH","philippines manila","Philippines (Manila)"],
+  ["Asia/Yangon","ミャンマー（ヤンゴン）","MM","myanmar yangon","Myanmar (Yangon)"],
+  ["Asia/Phnom_Penh","カンボジア（プノンペン）","KH","cambodia phnom penh","Cambodia (Phnom Penh)"],
+  ["Asia/Kolkata","インド（ムンバイ・デリー）","IN","india mumbai delhi bangalore hyderabad","India (Mumbai, Delhi)"],
+  ["Asia/Karachi","パキスタン（カラチ）","PK","pakistan karachi lahore","Pakistan (Karachi)"],
+  ["Asia/Dhaka","バングラデシュ（ダッカ）","BD","bangladesh dhaka","Bangladesh (Dhaka)"],
+  ["Asia/Colombo","スリランカ（コロンボ）","LK","sri lanka colombo","Sri Lanka (Colombo)"]
+ ]],
+ ["中東","Middle East",[
+  ["Asia/Dubai","UAE（ドバイ）","AE","uae dubai abu dhabi emirates","UAE (Dubai)"],
+  ["Asia/Riyadh","サウジアラビア（リヤド）","SA","saudi arabia riyadh","Saudi Arabia (Riyadh)"],
+  ["Asia/Qatar","カタール（ドーハ）","QA","qatar doha","Qatar (Doha)"],
+  ["Asia/Jerusalem","イスラエル（テルアビブ）","IL","israel tel aviv jerusalem","Israel (Tel Aviv)"],
+  ["Europe/Istanbul","トルコ（イスタンブール）","TR","turkey istanbul ankara","Turkey (Istanbul)"]
+ ]],
+ ["オセアニア","Oceania",[
+  ["Australia/Sydney","豪州（シドニー・メルボルン）","AU","australia sydney melbourne canberra","Australia (Sydney, Melbourne)"],
+  ["Australia/Brisbane","豪州（ブリスベン）","AU","australia brisbane queensland","Australia (Brisbane)"],
+  ["Australia/Adelaide","豪州（アデレード）","AU","australia adelaide","Australia (Adelaide)"],
+  ["Australia/Perth","豪州（パース）","AU","australia perth","Australia (Perth)"],
+  ["Pacific/Auckland","ニュージーランド（オークランド）","NZ","new zealand auckland wellington","New Zealand (Auckland)"]
+ ]],
+ ["欧州","Europe",[
+  ["Europe/London","英国（ロンドン）","GB","uk united kingdom london britain england eikoku","United Kingdom (London)"],
+  ["Europe/Dublin","アイルランド（ダブリン）","IE","ireland dublin","Ireland (Dublin)"],
+  ["Europe/Paris","フランス（パリ）","FR","france paris","France (Paris)"],
+  ["Europe/Berlin","ドイツ（ベルリン・フランクフルト）","DE","germany berlin frankfurt munich doitsu","Germany (Berlin, Frankfurt)"],
+  ["Europe/Zurich","スイス（チューリッヒ・バーゼル）","CH","switzerland zurich basel geneva","Switzerland (Zurich, Basel)"],
+  ["Europe/Amsterdam","オランダ（アムステルダム）","NL","netherlands amsterdam holland","Netherlands (Amsterdam)"],
+  ["Europe/Brussels","ベルギー（ブリュッセル）","BE","belgium brussels","Belgium (Brussels)"],
+  ["Europe/Madrid","スペイン（マドリード）","ES","spain madrid barcelona","Spain (Madrid)"],
+  ["Europe/Rome","イタリア（ミラノ・ローマ）","IT","italy rome milan","Italy (Milan, Rome)"],
+  ["Europe/Stockholm","スウェーデン（ストックホルム）","SE","sweden stockholm","Sweden (Stockholm)"],
+  ["Europe/Copenhagen","デンマーク（コペンハーゲン）","DK","denmark copenhagen","Denmark (Copenhagen)"],
+  ["Europe/Oslo","ノルウェー（オスロ）","NO","norway oslo","Norway (Oslo)"],
+  ["Europe/Helsinki","フィンランド（ヘルシンキ）","FI","finland helsinki","Finland (Helsinki)"],
+  ["Europe/Warsaw","ポーランド（ワルシャワ）","PL","poland warsaw","Poland (Warsaw)"],
+  ["Europe/Vienna","オーストリア（ウィーン）","AT","austria vienna","Austria (Vienna)"],
+  ["Europe/Prague","チェコ（プラハ）","CZ","czech prague","Czechia (Prague)"],
+  ["Europe/Lisbon","ポルトガル（リスボン）","PT","portugal lisbon","Portugal (Lisbon)"],
+  ["Europe/Athens","ギリシャ（アテネ）","GR","greece athens","Greece (Athens)"],
+  ["Europe/Moscow","ロシア（モスクワ）","RU","russia moscow","Russia (Moscow)"]
+ ]],
+ ["北米","North America",[
+  ["America/New_York","米国 東部（NY・ボストン）","US","usa us new york boston east eastern beikoku","US Eastern (New York, Boston)"],
+  ["America/Chicago","米国 中部（シカゴ）","US","usa us chicago central texas","US Central (Chicago)"],
+  ["America/Denver","米国 山岳部（デンバー）","US","usa us denver mountain colorado","US Mountain (Denver)"],
+  ["America/Phoenix","米国 アリゾナ（夏時間なし）","US","usa us phoenix arizona","US Arizona (no DST)"],
+  ["America/Los_Angeles","米国 西部（SF・LA・サンディエゴ）","US","usa us los angeles san francisco diego pacific west","US Pacific (SF, LA, San Diego)"],
+  ["Pacific/Honolulu","米国 ハワイ","US","usa us hawaii honolulu","US Hawaii"],
+  ["America/Toronto","カナダ（トロント・モントリオール）","CA","canada toronto montreal ottawa","Canada (Toronto, Montreal)"],
+  ["America/Vancouver","カナダ（バンクーバー）","CA","canada vancouver","Canada (Vancouver)"],
+  ["America/Mexico_City","メキシコ（メキシコシティ）","MX","mexico city","Mexico (Mexico City)"]
+ ]],
+ ["中南米","Latin America",[
+  ["America/Sao_Paulo","ブラジル（サンパウロ）","BR","brazil sao paulo rio","Brazil (Sao Paulo)"],
+  ["America/Argentina/Buenos_Aires","アルゼンチン（ブエノスアイレス）","AR","argentina buenos aires","Argentina (Buenos Aires)"],
+  ["America/Santiago","チリ（サンティアゴ）","CL","chile santiago","Chile (Santiago)"],
+  ["America/Bogota","コロンビア（ボゴタ）","CO","colombia bogota","Colombia (Bogota)"],
+  ["America/Lima","ペルー（リマ）","PE","peru lima","Peru (Lima)"]
+ ]],
+ ["アフリカ・その他","Africa & other",[
+  ["Africa/Johannesburg","南アフリカ（ヨハネスブルグ）","ZA","south africa johannesburg cape town","South Africa (Johannesburg)"],
+  ["Africa/Cairo","エジプト（カイロ）","EG","egypt cairo","Egypt (Cairo)"],
+  ["Africa/Lagos","ナイジェリア（ラゴス）","NG","nigeria lagos","Nigeria (Lagos)"],
+  ["Africa/Nairobi","ケニア（ナイロビ）","KE","kenya nairobi","Kenya (Nairobi)"],
+  ["UTC","協定世界時（UTC）","UTC","utc gmt","Coordinated Universal Time (UTC)"]
+ ]]
+];
+var BY_TZ={};
+DB.forEach(function(g){ g[2].forEach(function(c){
+  BY_TZ[c[0]]={tz:c[0],ja:c[1],cc:c[2],key:c[3],en:c[4]}; }); });
+var COMMON=["Asia/Tokyo","Asia/Singapore","America/New_York","America/Los_Angeles","Europe/London",
+  "Europe/Berlin","Europe/Zurich","Asia/Shanghai","Asia/Seoul","Asia/Kolkata","Australia/Sydney","Asia/Hong_Kong"];
+
+/* ================= 文言 ================= */
+var STR={
+ ja:{
+  sub:"各地域の希望時間を比較し、全員の負担が最も少ない会議候補を提案します。夏時間と冬時間は自動で調整されます。",
+  tCond:"条件", tRes:"最有力候補", tChart:"24時間ビュー",
+  tzhint:"この端末のタイムゾーン: ", lbDate:"会議日", lbDur:"所要時間", lbShift:"日付をずらす",
+  prev:"前日", next:"翌日", week:"1週間後", today:"今日",
+  min:"分", tParts:"参加地域（タイムゾーン）",
+  winShow:"希望時間を編集", winHide:"希望時間を隠す", addOpen:"地域を追加", addClose:"追加をとじる",
+  basehint:"左のラジオで基準地域を選べます。基準地域の時刻が候補の見出しになります。",
+  qph:"地域名で検索（例: ドイツ / New York / 上海）",
+  gRecent:"最近使った地域", gCommon:"よく使う地域",
+  pkNone:"該当する地域がありません。国名や都市名の一部を入力してください。",
+  scoreHelp:"適合度の計算方法", scoreLb:"適合度 ",
+  warn:"この日は全地域の希望枠に収まる時間がありません。調整が必要な地域が最も少ない順に並べています。日付か希望時間を変えると改善する場合があります。",
+  empty:"参加地域を追加してください。",
+  base:"基準", baseSuffix:"基準", dstOn:"夏時間", dstOff:"標準時", nowLb:"現在", wantLb:"希望",
+  openLb:"開始可能", closeLb:"終了期限",
+  openAria:"開始可能な最も早い時刻", closeAria:"会議を終えている必要がある時刻",
+  weekend:"週末", nextDay:"翌日にまたぐ", selected:"選択中",
+  incWeekend:"週末も候補に含める", nextWd:"次の平日",
+  weWarnA:"選択日は", weWarnB:"です。週末は候補から除外しています。",
+  weNone:"この日は週末のため、候補がありません。「次の平日」に移動するか、「週末も候補に含める」をオンにしてください。",
+  dstWarnA:"この前後で夏時間が切り替わります: ", dstWarnB:"。切替日をまたぐ会議は時差が変わります。",
+  weNote:"週末を含む候補です",
+  ics:".ics ファイル", shareLink:"条件付きリンクをコピー", linkCopied:"リンクをコピーしました",
+  titleHint:"Google / Outlook / .ics の予定名になります",
+  selTitle:"選択中の時刻", bestTitle:"最有力候補", tList:"候補一覧", outLb:"枠外", lowest:"この日最小", lowestTie:"同率最小", toList:"他の候補を見る", lbTitle:"会議名", titlePh:"Cross-border meeting",
+  stOk:"希望枠内", stNear:"少しはみ出し", stBad:"大きな調整",
+  reset:"設定をリセット", resetAsk:"もう一度押すとリセット", resetDone:"設定を初期状態に戻しました",
+  privacy:"入力した内容はブラウザ内だけで処理され、当社のサーバーに送信されることはありません。Google カレンダーまたは Outlook のボタンを押すと、会議名、日付、所要時間、各地域名と現地時刻が、その各サービスに送信されます。.ics ファイルはお使いの端末内で生成されます。",
+  contact:"お問い合わせ: info@beyondbridge.co",
+  gcal:"Google カレンダー", outlook:"Outlook（Web）", copy:"時刻をコピー", showChart:"24時間ビュー",
+  copied:"コピーしました", copyFail:"コピーできませんでした",
+  needOne:"最低1地域は必要です", maxFive:"追加できるのは5地域までです",
+  jump:"選択中の時刻へ移動",
+  lg1:"希望枠の中", lg2:"60分までのはみ出し", lg3:"枠外",
+  lg4:"バンドをクリックすると、その時刻の各地域の時間を確認できます。",
+  dstSum:"夏時間・冬時間の詳細を見る", dsth1:"この会議日の状況", dsth2:"次回の切替",
+  noTrans:"今後1年間に切替なし",
+  brandLine:"BB&C AI Company は、BeyondBridge & Co. のデジタルソリューション・ブランドです。",
+  tbSite:"BeyondBridge & Co. のサイトへ",
+  outroH:"BeyondBridge & Co.について",
+  outroText:"BeyondBridge & Co. はシンガポールを拠点に、海外のバイオテック企業と日本・アジアの製薬企業をつなぐクロスボーダー事業開発を支援しています。Bridge Hours は、国や地域をまたぐ日々の実務から生まれました。",
+  outroText2:"BB&C AI Company では、こうした現場の知見をもとに、BD 業務やスタートアップ経営を支える AI ソリューションを企画・開発しています。ご相談はお気軽にお問い合わせください。",
+  outroBtn:"BeyondBridge & Co. について",
+  eyCompany:"運営会社", eyContact:"お問い合わせ",
+  footH1:"計算について", footH2:"プライバシー",
+  footCalc:"時刻はブラウザが持つ IANA タイムゾーンデータベースを直接参照して計算しています。夏時間のルール変更は、ブラウザの更新に追随します。",
+  evTitle:"Cross border meeting",
+  brandTag:"国や地域を越えて、革新的なアセットと最適なパートナーをつなぎます。"
+ },
+ en:{
+  sub:"Compares each region's preferred hours and proposes the slots that ask the least of everyone. Daylight saving is handled automatically.",
+  tCond:"Setup", tRes:"Best times", tChart:"24-hour view",
+  tzhint:"This device: ", lbDate:"Meeting date", lbDur:"Length", lbShift:"Shift date",
+  prev:"Prev day", next:"Next day", week:"+1 week", today:"Today",
+  min:" min", tParts:"Participants (time zones)",
+  winShow:"Edit hours", winHide:"Hide hours", addOpen:"Add a region", addClose:"Close",
+  basehint:"Use the radio button to set the reference region. Candidate headlines show that region's local time.",
+  qph:"Search by country or city (e.g. Germany / New York)",
+  gRecent:"Recently used", gCommon:"Frequently used",
+  pkNone:"No match. Try part of a country or city name.",
+  scoreHelp:"How the score works", scoreLb:"Score ",
+  warn:"No slot on this date fits everyone's preferred hours. Options are ordered by how few regions need a big stretch. Changing the date or the preferred hours may help.",
+  empty:"Add at least one region.",
+  base:"Base", baseSuffix:"base", dstOn:"DST", dstOff:"Standard", nowLb:"Now", wantLb:"Hours",
+  openLb:"Earliest start", closeLb:"Must end by",
+  openAria:"Earliest possible start time", closeAria:"Time the meeting must be finished by",
+  weekend:"Weekend", nextDay:"Runs past midnight", selected:"Selected",
+  incWeekend:"Include weekends", nextWd:"Next weekday",
+  weWarnA:"The selected date is a ", weWarnB:". Weekend slots are excluded.",
+  weNone:"This date falls on a weekend, so no options are shown. Use \u201cNext weekday\u201d, or turn on \u201cInclude weekends\u201d.",
+  dstWarnA:"A clock change falls near this date: ", dstWarnB:". Meetings on either side of it sit at a different offset.",
+  weNote:"Falls on a weekend",
+  ics:".ics file", shareLink:"Copy link with these settings", linkCopied:"Link copied",
+  titleHint:"Becomes the event name in Google, Outlook and .ics",
+  selTitle:"Selected time", bestTitle:"Best option", tList:"All options", outLb:"Outside", lowest:"lowest today", lowestTie:"tied lowest", toList:"See the other options", lbTitle:"Meeting name", titlePh:"Cross-border meeting",
+  stOk:"Within hours", stNear:"Slightly outside", stBad:"Big stretch",
+  reset:"Reset settings", resetAsk:"Press again to reset", resetDone:"Settings reset",
+  privacy:"Everything you enter is processed in your browser and is never sent to our servers. Pressing the Google Calendar or Outlook button sends the meeting name, the date, the duration, and each region's name and local time to that service. The .ics file is generated on your device.",
+  contact:"Contact: info@beyondbridge.co",
+  gcal:"Google Calendar", outlook:"Outlook (web)", copy:"Copy times", showChart:"Show on chart",
+  copied:"Copied", copyFail:"Could not copy",
+  needOne:"Keep at least one region", maxFive:"Up to 5 regions",
+  jump:"Scroll to selected time",
+  lg1:"Within preferred hours", lg2:"Up to 60 min outside", lg3:"Outside",
+  lg4:"Click the band to see that moment in every region.",
+  dstSum:"Daylight saving details", dsth1:"On this meeting date", dsth2:"Next clock change",
+  noTrans:"No change in the next 12 months",
+  brandLine:"BB&C AI Company is the digital solutions brand of BeyondBridge & Co.",
+  tbSite:"Go to the BeyondBridge & Co. site",
+  outroH:"About BeyondBridge & Co.",
+  outroText:"BeyondBridge & Co. is a Singapore-based cross-border business development firm connecting global biotech companies with pharmaceutical partners in Japan and across Asia. Bridge Hours grew out of our own day-to-day work across time zones.",
+  outroText2:"Through BB&C AI Company, we turn that practical experience into AI solutions for business development teams and growing companies. If you are exploring a similar challenge, we would be happy to hear from you.",
+  outroBtn:"About BeyondBridge & Co.",
+  eyCompany:"Company", eyContact:"Contact",
+  footH1:"How times are calculated", footH2:"Privacy",
+  footCalc:"Times come from the IANA time zone database built into your browser. Daylight saving rule changes follow your browser updates.",
+  evTitle:"Cross border meeting",
+  brandTag:"Bridging Innovation to Patients, Beyond Borders"
+ }
+};
+
+/* ================= タイムゾーン計算 ================= */
+var FMT={};
+function fmt(tz){ if(!FMT[tz]) FMT[tz]=new Intl.DateTimeFormat("en-US",{timeZone:tz,hour12:false,
+  year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit"}); return FMT[tz]; }
+function parts(ts,tz){ var o={},a=fmt(tz).formatToParts(new Date(ts));
+  for(var i=0;i<a.length;i++)o[a[i].type]=a[i].value;
+  var h=+o.hour; if(h===24)h=0;
+  return {y:+o.year,m:+o.month,d:+o.day,h:h,mi:+o.minute}; }
+function offMin(ts,tz){ var p=parts(ts,tz); return Math.round((Date.UTC(p.y,p.m-1,p.d,p.h,p.mi)-ts)/60000); }
+function wallToTs(y,m,d,h,mi,tz){ var target=Date.UTC(y,m-1,d,h,mi),guess=target;
+  for(var i=0;i<3;i++){ var n=target-offMin(guess,tz)*60000; if(n===guess)break; guess=n; } return guess; }
+var WDJA=["日","月","火","水","木","金","土"], WDEN=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+var MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+var WDFULL=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+function wallOf(ts,tz){ var p=parts(ts,tz); p.wd=new Date(Date.UTC(p.y,p.m-1,p.d)).getUTCDay(); p.min=p.h*60+p.mi; return p; }
+function pad(n){ return (n<10?"0":"")+n; }
+function hm(m){ m=((m%1440)+1440)%1440; return pad(Math.floor(m/60))+":"+pad(m%60); }
+function tlabel(m){ return m>=1440?"24:00":hm(m); }
+function offLabel(m){ var s=m<0?"-":"+",a=Math.abs(m); return "UTC"+s+pad(Math.floor(a/60))+":"+pad(a%60); }
+function stdOff(ts,tz){ var y=parts(ts,tz).y;
+  return Math.min(offMin(Date.UTC(y,0,15,12,0),tz), offMin(Date.UTC(y,6,15,12,0),tz)); }
+function isDST(ts,tz){ return offMin(ts,tz)>stdOff(ts,tz); }
+var TRANS={};
+function nextTransition(ts,tz){
+  var key=tz+"|"+Math.floor(ts/86400000); if(TRANS[key]!==undefined) return TRANS[key];
+  var base=offMin(ts,tz), DAY=86400000, found=null;
+  for(var i=1;i<=400;i++){ var t=ts+i*DAY;
+    if(offMin(t,tz)!==base){ var lo=t-DAY,hi=t;
+      while(hi-lo>60000){ var mid=lo+Math.floor((hi-lo)/2/60000)*60000;
+        if(mid<=lo||mid>=hi)break; if(offMin(mid,tz)===base)lo=mid; else hi=mid; }
+      found={ts:hi,from:base,to:offMin(hi,tz)}; break; } }
+  TRANS[key]=found; return found;
+}
+
+/* ================= 言語ヘルパー ================= */
+function T(k){ return STR[state.lang][k]; }
+function nameOf(C){ return state.lang==="ja"?C.ja:C.en; }
+function splitName(n){
+  var i=n.indexOf("（"); if(i<0) i=n.indexOf(" (");
+  return i<0?[n,""]:[n.slice(0,i),n.slice(i)];
+}
+function nameHtml(C){ var p=splitName(nameOf(C));
+  return p[1]?p[0]+'<span class="nm-sub">'+p[1]+'</span>':p[0]; }
+function shortName(C){ return splitName(nameOf(C))[0]; }
+function fmtDur(m){
+  if(state.lang==="ja"){ if(m<60) return m+"分"; var h=Math.floor(m/60),r=m%60; return h+"時間"+(r?r+"分":""); }
+  if(m<60) return m+"m";
+  var H=Math.floor(m/60),R=m%60; return H+"h"+(R?" "+R+"m":"");
+}
+function fmtDate(w,withYear){
+  if(state.lang==="ja") return (withYear?w.y+"年":"")+w.m+"月"+w.d+"日（"+WDJA[w.wd]+"）";
+  return WDEN[w.wd]+", "+MON[w.m-1]+" "+w.d+(withYear?", "+w.y:"");
+}
+function RNG(){ return state.lang==="ja"?"〜":"–"; }
+function dayTag(w){ return state.lang==="ja"?(w.m+"/"+w.d):(MON[w.m-1]+" "+w.d); }
+
+/* ================= 状態 ================= */
+var DEF={open:8*60,close:18*60}, SGW={open:6*60,close:22*60};
+function makeLoc(tz){ var w=(tz==="Asia/Singapore")?SGW:DEF; return {tz:tz,open:w.open,close:w.close}; }
+function todayIn(tz){ var p=parts(Date.now(),tz); return p.y+"-"+pad(p.m)+"-"+pad(p.d); }
+function dstr(d){ return d.getUTCFullYear()+"-"+pad(d.getUTCMonth()+1)+"-"+pad(d.getUTCDate()); }
+function toUTCDate(str){ var p=str.split("-"); return new Date(Date.UTC(+p[0],+p[1]-1,+p[2])); }
+function wdOf(str){ return toUTCDate(str).getUTCDay(); }
+function nextWeekdayFrom(str){
+  var d=toUTCDate(str);
+  while(d.getUTCDay()===0||d.getUTCDay()===6) d.setUTCDate(d.getUTCDate()+1);
+  return dstr(d);
+}
+var navLang=(navigator.language||"en").toLowerCase();
+var DEFAULT_TZS=["Asia/Singapore","Asia/Tokyo","America/New_York"];
+function deviceZone(){
+  var tz=null;
+  try{ tz=Intl.DateTimeFormat().resolvedOptions().timeZone; }catch(e){}
+  if(!tz) return null;
+  if(BY_TZ[tz]) return tz;
+  var now=Date.now(), off;
+  try{ off=offMin(now,tz); }catch(e){ return null; }
+  var pre=String(tz).split("/")[0], best=null;
+  for(var k in BY_TZ){
+    var o; try{ o=offMin(now,k); }catch(e){ continue; }
+    if(o!==off) continue;
+    if(k.split("/")[0]===pre) return k;
+    if(!best) best=k;
+  }
+  return best;
+}
+function initialLocs(){
+  var dz=deviceZone(), list=[];
+  if(dz) list.push(dz);
+  DEFAULT_TZS.forEach(function(t){ if(list.length<3 && list.indexOf(t)<0) list.push(t); });
+  if(!list.length) list=DEFAULT_TZS.slice(0,3);
+  return list.map(makeLoc);
+}
+var INIT_LOCS=initialLocs();
+var state={ date:nextWeekdayFrom(todayIn(INIT_LOCS[0].tz)), dur:60,
+  locs:INIT_LOCS,
+  sel:null, showWin:false, recent:[], includeWeekend:false, title:"",
+  lang:(navLang.indexOf("ja")===0?"ja":"en") };
+try{
+  var sv=JSON.parse(localStorage.getItem("bridge-hours-v2")||"null");
+  if(sv){
+    if(sv.locs&&sv.locs.length){ var L=sv.locs.filter(function(l){return BY_TZ[l.tz];}).slice(0,5); if(L.length) state.locs=L; }
+    if(sv.dur) state.dur=sv.dur;
+    if(sv.recent) state.recent=sv.recent.filter(function(t){return BY_TZ[t];}).slice(0,8);
+    if(sv.lang==="ja"||sv.lang==="en") state.lang=sv.lang;
+    if(typeof sv.includeWeekend==="boolean") state.includeWeekend=sv.includeWeekend;
+    if(typeof sv.title==="string") state.title=sv.title.slice(0,120);
+  }
+}catch(e){}
+function save(){ try{ localStorage.setItem("bridge-hours-v2",
+  JSON.stringify({locs:state.locs,dur:state.dur,recent:state.recent,lang:state.lang,includeWeekend:state.includeWeekend,title:state.title})); }catch(e){} }
+
+/* ================= 評価 ================= */
+function judge(startMin,dur,L){
+  var e=startMin+dur;
+  if(startMin>=L.open && e<=L.close){
+    var sc=100, lunch=(startMin<780&&e>720);
+    if(startMin>=540&&e<=1020) sc+=15; else sc+=6;
+    if(lunch) sc-=6;
+    var why = state.lang==="ja"
+      ? (lunch?"希望時間内（昼休みにかかります）":"希望時間内")
+      : (lunch?"Within preferred hours (overlaps lunch)":"Within preferred hours");
+    return {st:"ok",sc:sc,why:why,out:0};
+  }
+  var early=Math.max(0,L.open-startMin), late=Math.max(0,e-L.close), out=early+late, why;
+  if(state.lang==="ja"){
+    if(early&&late) why="希望枠より"+fmtDur(out)+"はみ出します";
+    else if(early)  why="希望開始より"+fmtDur(early)+"早い";
+    else            why="希望終了を"+fmtDur(late)+"超過";
+  } else {
+    if(early&&late) why=fmtDur(out)+" outside preferred hours";
+    else if(early)  why=fmtDur(early)+" before preferred start";
+    else            why=fmtDur(late)+" past preferred end";
+  }
+  var st=(startMin>=L.open-60 && e<=L.close+60)?"near":"bad";
+  return {st:st,sc:st==="near"?55:0,why:why,out:out};
+}
+function evalSlot(ts){
+  var rows=[],bad=0,near=0,total=0,out=0;
+  for(var i=0;i<state.locs.length;i++){
+    var L=state.locs[i], w=wallOf(ts,L.tz), r=judge(w.min,state.dur,L);
+    if(r.st==="bad")bad++; else if(r.st==="near")near++;
+    total+=r.sc; out+=r.out;
+    rows.push({loc:L,wall:w,st:r.st,why:r.why});
+  }
+  var we=0;
+  rows.forEach(function(r){ if(r.wall.wd===0||r.wall.wd===6) we++; });
+  var raw=Math.round(total/(state.locs.length*115)*100);
+  return {ts:ts,rows:rows,bad:bad,near:near,out:out,we:we,
+          score:Math.max(0,raw-25*bad-15*we)};
+}
+function dayStartTs(){ var p=state.date.split("-"); return wallToTs(+p[0],+p[1],+p[2],0,0,state.locs[0].tz); }
+function ranked(){
+  var t0=dayStartTs(), raw=[];
+  for(var k=0;k<96;k++) raw.push(evalSlot(t0+k*15*60000));
+  var all = state.includeWeekend ? raw : raw.filter(function(s){ return s.we===0; });
+  var blockedByWeekend = (all.length===0 && raw.length>0);
+  all.sort(function(a,b){
+    if(a.we!==b.we) return a.we-b.we;
+    if(a.bad!==b.bad) return a.bad-b.bad;
+    if(a.out!==b.out) return a.out-b.out;
+    if(b.score!==a.score) return b.score-a.score;
+    return a.ts-b.ts; });
+  var minOut = all.length ? all[0].out : 0;
+  var tieMin = all.filter(function(x){ return x.out===minOut; }).length;
+  var keep=[];
+  for(var i=0;i<all.length&&keep.length<6;i++){
+    var ok=true;
+    for(var j=0;j<keep.length;j++) if(Math.abs(all[i].ts-keep[j].ts)<90*60000) ok=false;
+    if(ok) keep.push(all[i]);
+  }
+  keep.minOut=minOut; keep.tieMin=tieMin; keep.blockedByWeekend=blockedByWeekend; keep.considered=all.length;
+  return keep;
+}
+function whoIs(s,st){
+  return s.rows.filter(function(r){ return r.st===st; })
+               .map(function(r){ return shortName(BY_TZ[r.loc.tz]); });
+}
+function verdictOf(s){
+  var ja=(state.lang==="ja"), badWho=whoIs(s,"bad"), nearWho=whoIs(s,"near");
+  if(s.bad===0&&s.near===0)
+    return {cls:"v-ok",txt: ja?"全地域が希望枠内":"Fits everyone"};
+  if(s.bad===0){
+    if(s.near===1) return {cls:"v-near",txt: ja?(nearWho[0]+" が少しはみ出し"):(nearWho[0]+" slightly outside")};
+    if(s.near===2) return {cls:"v-near",txt: ja?(nearWho.join("・")+" が少しはみ出し"):(nearWho.join(" and ")+" slightly outside")};
+    return {cls:"v-near",txt: ja?(s.near+"地域が少しはみ出し"):(s.near+" regions slightly outside")};
+  }
+  if(s.bad===1) return {cls:"v-bad",txt: ja?(badWho[0]+" に大きな調整"):(badWho[0]+" needs a big stretch")};
+  if(s.bad===2) return {cls:"v-bad",txt: ja?(badWho.join("・")+" に大きな調整"):(badWho.join(" and ")+" need a big stretch")};
+  return {cls:"v-bad",txt: ja?(s.bad+"地域に大きな調整"):(s.bad+" regions need a big stretch")};
+}
+
+var $=function(id){ return document.getElementById(id); };
+var toastT=null;
+function toast(msg){ var el=$("toast"); el.textContent=msg; el.classList.add("on");
+  clearTimeout(toastT); toastT=setTimeout(function(){ el.classList.remove("on"); },1900); }
+
+/* ================= 参加地域 ================= */
+function timeSelect(i,k,val){
+  var lo=(k==="open")?0:30, hi=(k==="open")?1410:1440, out="";
+  for(var m=lo;m<=hi;m+=30) out+='<option value="'+m+'"'+(m===val?" selected":"")+'>'+tlabel(m)+'</option>';
+  if(val%30!==0||val<lo||val>hi) out='<option value="'+val+'" selected>'+tlabel(val)+'</option>'+out;
+  return '<select data-i="'+i+'" data-k="'+k+'" aria-label="'+(k==="open"?T("openAria"):T("closeAria"))+'">'+out+'</select>';
+}
+function renderLocs(){
+  var box=$("locs"); box.innerHTML="";
+  box.className="loc-list"+(state.showWin?" show-win":"");
+  var ref=dayStartTs()+12*3600000;
+  state.locs.forEach(function(L,i){
+    var C=BY_TZ[L.tz], off=offMin(ref,L.tz), dst=isDST(ref,L.tz), now=wallOf(Date.now(),L.tz);
+    var row=document.createElement("div");
+    row.className="loc"+(i===0?" base":"");
+    row.innerHTML=
+      '<div class="rad"><input type="radio" name="baseloc" '+(i===0?"checked":"")+' data-base="'+i+'" aria-label="'+(state.lang==="ja"?(nameOf(C)+"を基準地域にする"):("Use "+nameOf(C)+" as the reference region"))+'"></div>'+
+      '<div class="loc-id">'+
+        '<div class="loc-name"><span class="cc">'+C.cc+'</span>'+nameHtml(C)+
+          (i===0?' <span class="tag dy">'+T("base")+'</span>':'')+'</div>'+
+        '<div class="loc-meta"><span class="mono">'+offLabel(off)+'</span>'+
+          '<span class="dst'+(dst?"":" std")+'">'+(dst?T("dstOn"):T("dstOff"))+'</span>'+
+          '<span class="mono">'+T("nowLb")+' '+hm(now.min)+'</span>'+
+          '<span>'+T("wantLb")+' '+tlabel(L.open)+RNG()+tlabel(L.close)+'</span></div>'+
+      '</div>'+
+      '<span class="sp"></span>'+
+      '<button class="x" type="button" data-del="'+i+'" aria-label="'+(state.lang==="ja"?(nameOf(C)+"を削除"):("Remove "+nameOf(C)))+'">&times;</button>'+
+      '<div class="wins"><div class="win"><span>'+T("openLb")+'</span>'+timeSelect(i,"open",L.open)+'</div>'+
+      '<div class="win"><span>'+T("closeLb")+'</span>'+timeSelect(i,"close",L.close)+'</div></div>';
+    box.appendChild(row);
+  });
+  box.querySelectorAll("select[data-k]").forEach(function(sel){
+    sel.addEventListener("change",function(){
+      var L=state.locs[+sel.dataset.i]; L[sel.dataset.k]=+sel.value;
+      if(L.close<=L.open) L.close=Math.min(1440,L.open+60);
+      save(); renderAll(); });
+  });
+  box.querySelectorAll("[data-del]").forEach(function(b){
+    b.addEventListener("click",function(){
+      if(state.locs.length<=1){ toast(T("needOne")); return; }
+      state.locs.splice(+b.dataset.del,1); state.sel=null; save(); renderAll(); });
+  });
+  box.querySelectorAll("[data-base]").forEach(function(r){
+    r.addEventListener("change",function(){
+      var i=+r.dataset.base; if(i===0) return;
+      state.locs.unshift(state.locs.splice(i,1)[0]);
+      state.sel=null; save(); renderAll(); });
+  });
+}
+
+/* ================= ピッカー ================= */
+function optHtml(tz){
+  var C=BY_TZ[tz], off=offMin(dayStartTs()+12*3600000,tz);
+  return '<button class="opt" type="button" data-tz="'+tz+'"><span class="o-n">'+nameOf(C)+'</span>'+
+         '<span class="o-off">'+offLabel(off)+'</span></button>';
+}
+function renderOpts(){
+  var q=($("q").value||"").trim().toLowerCase();
+  var used={}; state.locs.forEach(function(l){ used[l.tz]=1; });
+  var html="";
+  function group(title,list){
+    list=list.filter(function(tz){ return !used[tz]; });
+    if(list.length) html+='<div class="opt-g">'+title+'</div>'+list.map(optHtml).join("");
+  }
+  if(!q){
+    if(state.recent.length) group(T("gRecent"), state.recent.slice(0,6));
+    group(T("gCommon"), COMMON);
+    DB.forEach(function(g){ group(state.lang==="ja"?g[0]:g[1], g[2].map(function(c){ return c[0]; })); });
+  } else {
+    var hit=0;
+    DB.forEach(function(g){
+      var list=g[2].filter(function(c){
+        return !used[c[0]] && ((c[1]+" "+c[3]+" "+c[4]+" "+c[0]).toLowerCase().indexOf(q)>=0);
+      }).map(function(c){ return c[0]; });
+      if(list.length){ hit+=list.length;
+        html+='<div class="opt-g">'+(state.lang==="ja"?g[0]:g[1])+'</div>'+list.map(optHtml).join(""); }
+    });
+    if(!hit) html='<div class="pk-none">'+T("pkNone")+'</div>';
+  }
+  var box=$("opts"); box.innerHTML=html;
+  box.querySelectorAll(".opt").forEach(function(b){
+    b.addEventListener("click",function(){ addLoc(b.dataset.tz); }); });
+}
+function addLoc(tz){
+  if(state.locs.length>=5){ toast(T("maxFive")); return; }
+  if(state.locs.some(function(l){ return l.tz===tz; })) return;
+  state.locs.push(makeLoc(tz));
+  state.recent=[tz].concat(state.recent.filter(function(t){ return t!==tz; })).slice(0,8);
+  state.sel=null; save(); renderAll(); renderOpts();
+  toast(state.lang==="ja" ? (nameOf(BY_TZ[tz])+" を追加しました") : ("Added "+nameOf(BY_TZ[tz])));
+}
+
+/* ================= 候補 ================= */
+function slotText(s){
+  var bw=s.rows[0].wall;
+  var head=state.lang==="ja"
+    ? fmtDate(bw,true)+"／所要 "+state.dur+"分"
+    : fmtDate(bw,true)+" / "+state.dur+" min";
+  var lines=[head,""];
+  s.rows.forEach(function(r){
+    var C=BY_TZ[r.loc.tz], w=r.wall, e=w.min+state.dur;
+    var note=(e>=1440||w.d!==bw.d||w.m!==bw.m)?(" ("+dayTag(w)+")"):"";
+    lines.push(nameOf(C)+" "+hm(w.min)+RNG()+hm(e)+note);
+  });
+  return lines.join("\n");
+}
+var CAN_DL = (function(){ try{ return window.self===window.top; }catch(e){ return false; } })();
+function meetingTitle(){ return (state.title||"").trim() || "Cross-border meeting"; }
+function icsEsc(t){ return String(t).replace(/\\/g,"\\\\").replace(/;/g,"\\;")
+  .replace(/,/g,"\\,").replace(/\r?\n/g,"\\n"); }
+function icsStamp(d){ return d.getUTCFullYear()+pad(d.getUTCMonth()+1)+pad(d.getUTCDate())+"T"+
+  pad(d.getUTCHours())+pad(d.getUTCMinutes())+"00Z"; }
+function downloadICS(s){
+  var st=new Date(s.ts), en=new Date(s.ts+state.dur*60000);
+  var uid="bh-"+s.ts+"-"+Math.random().toString(36).slice(2,8)+"@beyondbridge.co";
+  var ics=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//BeyondBridge&Co.//Bridge Hours//EN",
+    "CALSCALE:GREGORIAN","METHOD:PUBLISH","BEGIN:VEVENT","UID:"+uid,
+    "DTSTAMP:"+icsStamp(new Date()),"DTSTART:"+icsStamp(st),"DTEND:"+icsStamp(en),
+    "SUMMARY:"+icsEsc(meetingTitle()),
+    "DESCRIPTION:"+icsEsc(slotText(s)),
+    "END:VEVENT","END:VCALENDAR"].join("\r\n");
+  try{
+    var blob=new Blob([ics],{type:"text/calendar;charset=utf-8"});
+    var url=URL.createObjectURL(blob), a=document.createElement("a");
+    a.href=url; a.download="meeting.ics"; document.body.appendChild(a); a.click();
+    setTimeout(function(){ URL.revokeObjectURL(url); a.remove(); },500);
+  }catch(e){ toast(T("copyFail")); }
+}
+function shareUrl(){
+  var p=["d="+state.date,"m="+state.dur,"w="+(state.includeWeekend?1:0),"g="+state.lang,
+    "t="+encodeURIComponent((state.title||"").slice(0,120)),
+    "l="+state.locs.map(function(L){ return encodeURIComponent(L.tz)+"~"+L.open+"-"+L.close; }).join(",")];
+  return location.origin+location.pathname+"#"+p.join("&");
+}
+function readShare(){
+  var h=(location.hash||"").replace(/^#/,""); if(!h) return false;
+  var q={}; h.split("&").forEach(function(kv){ var i=kv.indexOf("="); if(i>0) q[kv.slice(0,i)]=kv.slice(i+1); });
+  var ok=false;
+  if(q.d&&/^\d{4}-\d{2}-\d{2}$/.test(q.d)){ state.date=q.d; ok=true; }
+  if(q.m&&+q.m>0){ state.dur=+q.m; ok=true; }
+  if(q.w==="1"||q.w==="0"){ state.includeWeekend=(q.w==="1"); ok=true; }
+  if(q.g==="ja"||q.g==="en"){ state.lang=q.g; ok=true; }
+  if(q.t!==undefined){ try{ state.title=decodeURIComponent(q.t).slice(0,120); ok=true; }catch(e){} }
+  if(q.l){
+    var L=q.l.split(",").map(function(t){
+      var m=t.split("~"), tz=decodeURIComponent(m[0]), w=(m[1]||"").split("-");
+      if(!BY_TZ[tz]) return null;
+      var o=+w[0], c=+w[1];
+      if(!isFinite(o)||!isFinite(c)||c<=o) { var d=makeLoc(tz); o=d.open; c=d.close; }
+      return {tz:tz,open:o,close:c};
+    }).filter(Boolean).slice(0,5);
+    if(L.length){ state.locs=L; ok=true; }
+  }
+  return ok;
+}
+function outlookUrl(s){
+  var st=new Date(s.ts), en=new Date(s.ts+state.dur*60000);
+  function iso(d){ return d.toISOString().replace(/\.\d{3}Z$/,"Z"); }
+  return "https://outlook.office.com/calendar/0/deeplink/compose"+
+    "?path=%2Fcalendar%2Faction%2Fcompose&rru=addevent&allday=false"+
+    "&subject="+encodeURIComponent(meetingTitle())+
+    "&body="+encodeURIComponent(slotText(s))+
+    "&startdt="+iso(st)+"&enddt="+iso(en);
+}
+function gcalUrl(s){
+  var st=new Date(s.ts), en=new Date(s.ts+state.dur*60000);
+  function z(d){ return d.getUTCFullYear()+pad(d.getUTCMonth()+1)+pad(d.getUTCDate())+"T"+
+    pad(d.getUTCHours())+pad(d.getUTCMinutes())+"00Z"; }
+  return "https://calendar.google.com/calendar/render?action=TEMPLATE"+
+    "&text="+encodeURIComponent(meetingTitle())+
+    "&details="+encodeURIComponent(slotText(s))+
+    "&dates="+z(st)+"/"+z(en);
+}
+var CONSIDERED=96;
+function slotRows(s){
+  var bw=s.rows[0].wall;
+  return s.rows.map(function(r){
+    var C=BY_TZ[r.loc.tz], w=r.wall, e=w.min+state.dur, tags="";
+    if(w.wd===0||w.wd===6) tags+='<span class="tag we">'+T("weekend")+'</span>';
+    if(w.d!==bw.d) tags+='<span class="tag dy">'+dayTag(w)+'</span>';
+    else if(e>=1440) tags+='<span class="tag dy">'+T("nextDay")+'</span>';
+    var lab=r.st==="ok"?T("stOk"):(r.st==="near"?T("stNear"):T("stBad"));
+    return '<tr class="r-'+r.st+'"><td class="c-name">'+nameHtml(C)+tags+
+           '<div class="c-why why-'+r.st+'">'+r.why+'</div></td>'+
+           '<td class="c-time"><div class="tv">'+hm(w.min)+" "+RNG()+" "+hm(e)+'</div>'+
+           '<span class="st st-'+r.st+'">'+lab+'</span></td></tr>';
+  }).join("");
+}
+function slotFoot(s,minOut,isBest){
+  var totalTxt=s.out?fmtDur(s.out):(state.lang==="ja"?"0分":"0m");
+  var foot='<b>'+(state.lang==="ja"?("枠外の合計 "+totalTxt):("Total outside: "+totalTxt))+'</b>';
+  if(s.we) foot+='<span class="ft-we">'+T("weNote")+'</span>';
+  if(isBest)
+    foot+='<span>'+(state.lang==="ja"
+      ? (TIEMIN>1?"この日の候補の中で同率最小です":"この日の候補の中で最小です")
+      : (TIEMIN>1?"Tied for the lowest of all options on this date":"The lowest of all options on this date"))+'</span>';
+  else if(minOut!==undefined){
+    var diff=fmtDur(Math.max(0,s.out-minOut));
+    foot+='<span>'+(state.lang==="ja"?("最有力候補との差 "+diff):(diff+" more than the best option"))+'</span>';
+  }
+  return foot;
+}
+function actionsHtml(s,pri){
+  return '<a href="'+gcalUrl(s)+'" target="_blank" rel="noopener"'+(pri?' class="pri"':'')+'>'+T("gcal")+'</a>'+
+    '<a href="'+outlookUrl(s)+'" target="_blank" rel="noopener"'+(pri?' class="pri"':'')+'>'+T("outlook")+'</a>'+
+    (CAN_DL?'<button type="button" data-ics="1"'+(pri?' class="pri"':'')+'>'+T("ics")+'</button>':'')+
+    '<button type="button" data-copy="1">'+T("copy")+'</button>';
+}
+function wireActions(el,s){
+  el.querySelectorAll("[data-copy]").forEach(function(b){
+    b.addEventListener("click",function(){
+      var t=slotText(s);
+      if(navigator.clipboard&&navigator.clipboard.writeText)
+        navigator.clipboard.writeText(t).then(function(){ toast(T("copied")); },function(){ toast(T("copyFail")); });
+      else toast(T("copyFail")); });
+  });
+  el.querySelectorAll("[data-ics]").forEach(function(b){
+    b.addEventListener("click",function(){ downloadICS(s); }); });
+}
+function slotMini(s,rank,minOut){
+  var bw=s.rows[0].wall, v=verdictOf(s);
+  var el=document.createElement("button");
+  el.type="button"; el.className="mini"; el.dataset.ts=String(s.ts);
+  var dots=s.rows.map(function(r){
+    var lab=r.st==="ok"?T("stOk"):(r.st==="near"?T("stNear"):T("stBad"));
+    return '<i class="md d-'+r.st+'" title="'+nameOf(BY_TZ[r.loc.tz])+": "+lab+'"></i>';
+  }).join("");
+  var out=T("outLb")+" "+(s.out?fmtDur(s.out):(state.lang==="ja"?"0分":"0m"));
+  if(minOut!==undefined && s.out===minOut) out+=(state.lang==="ja"?" ・ ":" · ")+(TIEMIN>1?T("lowestTie"):T("lowest"));
+  el.innerHTML=
+    '<span class="mini-top"><span class="rank">#'+rank+'</span>'+
+      '<span class="mini-time">'+hm(bw.min)+'</span>'+
+      '<span class="mini-dots">'+dots+'</span></span>'+
+    '<span class="verdict '+v.cls+'">'+v.txt+'</span>'+
+    '<span class="mini-out">'+out+'</span>';
+  el.addEventListener("click",function(){ selectTime(s.ts,true); });
+  return el;
+}
+function markSelected(){
+  var cur=focusTs();
+  document.querySelectorAll("#res .mini").forEach(function(el){
+    el.classList.toggle("on", Number(el.dataset.ts)===cur);
+    el.setAttribute("aria-pressed", String(Number(el.dataset.ts)===cur));
+  });
+}
+var MINOUT=0, BESTTS=null, TIEMIN=1;
+function renderRes(){
+  var box=$("res"); box.innerHTML="";
+  var list=ranked(), minOut=list.minOut;
+  CONSIDERED=list.considered||96;
+  var bars=[];
+  var wd=wdOf(state.date);
+  if(wd===0||wd===6)
+    bars.push('<div class="warnbar we">'+T("weWarnA")+(state.lang==="ja"?(WDJA[wd]+"曜日"):WDFULL[wd])+T("weWarnB")+
+      ' <button class="wbtn" type="button" data-nwd="1">'+T("nextWd")+'</button></div>');
+  var dstHits=[], t0=dayStartTs(), tEnd=t0+8*86400000;
+  state.locs.forEach(function(L){
+    var t=nextTransition(t0-86400000,L.tz);
+    if(t && t.ts<tEnd){
+      var w=wallOf(t.ts,L.tz), diff=(t.to-t.from)/60;
+      dstHits.push(nameOf(BY_TZ[L.tz])+"（"+pad(w.m)+"/"+pad(w.d)+" "+(diff>0?"+":"")+diff+"h）");
+    }
+  });
+  if(dstHits.length) bars.push('<div class="warnbar dst">'+T("dstWarnA")+dstHits.join(" / ")+T("dstWarnB")+'</div>');
+  if(list.length&&list[0].bad) bars.push('<div class="warnbar">'+T("warn")+'</div>');
+  $("warnbar").innerHTML=bars.join("");
+  $("warnbar").querySelectorAll("[data-nwd]").forEach(function(b){
+    b.addEventListener("click",function(){
+      state.date=nextWeekdayFrom(state.date); $("date").value=state.date; state.sel=null; renderAll(); });
+  });
+  if(list.blockedByWeekend){
+    box.innerHTML='<div class="empty">'+T("weNone")+'</div>';
+    var wrap=document.createElement("div"); wrap.className="quick"; wrap.style.justifyContent="center";
+    var b1=document.createElement("button"); b1.type="button"; b1.className="btn-primary"; b1.textContent=T("nextWd");
+    b1.addEventListener("click",function(){ state.date=nextWeekdayFrom(state.date); $("date").value=state.date; state.sel=null; renderAll(); });
+    var b2=document.createElement("button"); b2.type="button"; b2.textContent=T("incWeekend");
+    b2.addEventListener("click",function(){ state.includeWeekend=true; $("incwe").checked=true; save(); renderAll(); });
+    wrap.appendChild(b1); wrap.appendChild(b2); box.appendChild(wrap);
+    return;
+  }
+  if(!list.length){ box.innerHTML='<div class="empty">'+T("empty")+'</div>'; return; }
+  MINOUT=minOut; TIEMIN=list.tieMin||1; BESTTS=list[0].ts;
+  for(var i=0;i<Math.min(3,list.length);i++) box.appendChild(slotMini(list[i],i+1,minOut));
+  if(list.length>3){
+    var n=list.length-3, d=document.createElement("details"); d.className="more";
+    d.innerHTML='<summary>'+(state.lang==="ja"?("他の候補を見る（"+n+"件）"):(n+" more options"))+
+      '</summary><div class="more-in"></div>';
+    var inn=d.querySelector(".more-in");
+    for(var j=3;j<list.length;j++) inn.appendChild(slotMini(list[j],j+1,minOut));
+    box.appendChild(d);
+  }
+  markSelected();
+}
+var HOWTO={
+ ja:'<div class="howto"><b>適合度の計算方法</b><ul>'+
+  '<li>各地域は最大115点です。会議が希望枠に完全に収まると100点、さらに9:00〜17:00に収まると15点、それ以外の枠内は6点を加算します。12:00〜13:00にかかる場合は6点引きます。</li>'+
+  '<li>希望枠からのはみ出しが60分以内なら55点、60分を超えると0点です。</li>'+
+  '<li>合計を満点で割って100点換算し、大きな調整が必要な地域1件につき25点、現地が週末になる地域1件につき15点を引きます。</li>'+
+  '<li>候補は、①週末を含む地域が少ない、②大きな調整が必要な地域が少ない、③枠外時間の合計が短い、④適合度が高い、⑤時刻が早い、の順で並びます。</li>'+
+  '<li>「枠外の合計」は、各地域の希望枠からはみ出した分数を全地域で足したものです。この数字が小さいほど、誰かに無理を頼む量が少なくなります。</li>'+
+  '</ul></div>',
+ en:'<div class="howto"><b>How the score works</b><ul>'+
+  '<li>Each region scores up to 115. A meeting fully inside the preferred hours earns 100, plus 15 more if it also sits inside 09:00 to 17:00, or 6 otherwise. Overlapping 12:00 to 13:00 costs 6.</li>'+
+  '<li>Spilling outside the preferred hours by 60 minutes or less scores 55. More than 60 minutes scores 0.</li>'+
+  '<li>The total is normalised to 100, then 25 points come off for every region that needs a big stretch and 15 for every region where the meeting lands on a weekend.</li>'+
+  '<li>Options are ranked in this order: fewest regions on a weekend, then fewest regions needing a big stretch, then the shortest total time outside preferred hours, then the highest score, then the earliest time.</li>'+
+  '<li>"Total outside" adds up the minutes each region falls outside its preferred hours. The smaller it is, the less you are asking of anyone.</li>'+
+  '</ul></div>'
+};
+function toggleHelp(force){
+  var h=$("howto"), b=$("scorehelp");
+  var open=(force!==undefined)?force:h.hidden;
+  h.hidden=!open; b.setAttribute("aria-expanded",String(open));
+  h.innerHTML=open?HOWTO[state.lang]:"";
+  if(open) h.scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+
+/* ================= 24時間ビュー ================= */
+function catOf(min,L){
+  var e=min+30;
+  if(min>=L.open&&e<=L.close) return "work";
+  if(min>=L.open-60&&e<=L.close+60) return "edge";
+  return "";
+}
+function focusTs(){ if(state.sel!==null) return state.sel; var r=ranked(); return r.length?r[0].ts:null; }
+var KFOCUS=null, REFOCUS=false;
+function selectTime(ts,bringIntoView){
+  state.sel=ts; renderChart(); renderSel();
+  if(bringIntoView){
+    var pc=$("selpanel").closest("section")||$("selpanel"), cr=pc.getBoundingClientRect();
+    var vis=(cr.top>=0 && cr.bottom<=window.innerHeight);
+    if(!vis) pc.scrollIntoView({behavior:"smooth",block:"start"});
+    setTimeout(function(){ scrollChartTo(ts); }, vis?0:340);
+  } else {
+    var p=$("selpanel"), r=p.getBoundingClientRect();
+    if(r.bottom>window.innerHeight-8||r.top<0) p.scrollIntoView({behavior:"smooth",block:"nearest"});
+  }
+}
+function renderSel(){
+  var box=$("selpanel"); if(!box) return;
+  var ts=focusTs();
+  if(ts===null||!state.locs.length){ box.innerHTML=""; return; }
+  var s=evalSlot(ts), bw=s.rows[0].wall, v=verdictOf(s);
+  var isBest=(s.out===MINOUT);
+  var t=$("t-sel"); if(t) t.textContent=(ts===BESTTS)?T("bestTitle"):T("selTitle");
+  box.innerHTML=
+    '<div class="selp-hd">'+
+      '<span class="selp-time">'+hm(bw.min)+'</span>'+
+      '<span class="card-note">'+BY_TZ[state.locs[0].tz].cc+' '+T("baseSuffix")+'</span>'+
+      '<span class="verdict '+v.cls+'">'+v.txt+'</span>'+
+      '<span class="gap"></span>'+
+      '<span class="score">'+T("scoreLb")+s.score+'</span>'+
+    '</div>'+
+    '<table class="tl"><tbody>'+slotRows(s)+'</tbody></table>'+
+    '<div class="slot-ft">'+slotFoot(s,MINOUT,isBest)+'</div>'+
+    '<div class="acts">'+actionsHtml(s,true)+'</div>';
+  wireActions(box,s);
+  markSelected();
+}
+function renderChart(){
+  var t0=dayStartTs(), box=$("chart"); box.innerHTML="";
+  var ln=$("listnote"); if(ln) ln.textContent=BY_TZ[state.locs[0].tz].cc+" "+T("baseSuffix");
+  var baseTz=state.locs[0].tz, bw=wallOf(t0,baseTz), bn=nameOf(BY_TZ[baseTz]);
+  $("axisnote").textContent = state.lang==="ja"
+    ? (bn+" の "+fmtDate(bw)+" 0時から24時")
+    : ("Midnight to midnight on "+fmtDate(bw)+" in "+bn);
+  var f=focusTs(), fEnd=(f!==null)?f+state.dur*60000:null;
+  state.locs.forEach(function(L,i){
+    var C=BY_TZ[L.tz];
+    var off=offMin(t0+12*3600000,L.tz)-offMin(t0+12*3600000,baseTz);
+    var row=document.createElement("div"); row.className="crow";
+    var lb=document.createElement("div"); lb.className="crow-lb";
+    var sn=shortName(C), pfx=(sn.indexOf(C.cc+" ")===0)?"":(C.cc+" ");
+    lb.innerHTML=pfx+sn+'<br><span class="off">'+
+      (i===0?T("base"):(off>=0?"+":"")+(off/60)+"h")+'</span>';
+    var band=document.createElement("div"); band.className="band";
+    band.setAttribute("role","group"); band.setAttribute("aria-label",nameOf(C));
+    var isBase=(i===0), selK=(f!==null)?Math.round((f-t0)/(30*60000)):0;
+    if(isBase&&KFOCUS===null) KFOCUS=Math.max(0,Math.min(47,selK));
+    for(var k=0;k<48;k++){
+      var ts=t0+k*30*60000, w=wallOf(ts,L.tz), c=document.createElement("div");
+      var cat=catOf(w.min,L);
+      c.className="cell"+(cat?" "+cat:"");
+      if(f!==null && ts+30*60000>f && ts<fEnd) c.classList.add("sel");
+      c.title=nameOf(C)+" "+hm(w.min); c.dataset.k=k;
+      if(isBase){
+        c.setAttribute("role","button");
+        c.setAttribute("aria-label", hm(w.min)+" "+nameOf(C));
+        c.setAttribute("aria-pressed", String(k===selK));
+        c.tabIndex=(k===KFOCUS)?0:-1;
+      }
+      band.appendChild(c);
+    }
+    band.addEventListener("click",function(ev){
+      var t=ev.target.closest(".cell"); if(!t) return;
+      KFOCUS=+t.dataset.k; selectTime(t0+KFOCUS*30*60000,false); });
+    if(isBase) band.addEventListener("keydown",function(ev){
+      var k=(KFOCUS===null)?0:KFOCUS, nk=k;
+      if(ev.key==="ArrowRight"||ev.key==="ArrowDown") nk=Math.min(47,k+1);
+      else if(ev.key==="ArrowLeft"||ev.key==="ArrowUp") nk=Math.max(0,k-1);
+      else if(ev.key==="Home") nk=0;
+      else if(ev.key==="End") nk=47;
+      else if(ev.key==="Enter"||ev.key===" "||ev.key==="Spacebar") nk=k;
+      else return;
+      ev.preventDefault(); KFOCUS=nk; REFOCUS=true;
+      selectTime(t0+nk*30*60000,false);
+    });
+    row.appendChild(lb); row.appendChild(band); box.appendChild(row);
+  });
+  var ax=document.createElement("div"); ax.className="crow";
+  var axl=document.createElement("div"); axl.className="crow-lb";
+  var axb=document.createElement("div"); axb.className="axis";
+  for(var q=0;q<12;q++){ var s=document.createElement("span"); s.textContent=pad(q*2); axb.appendChild(s); }
+  ax.appendChild(axl); ax.appendChild(axb); box.appendChild(ax);
+  if(REFOCUS){ var fc=box.querySelector('.band .cell[data-k="'+KFOCUS+'"]'); if(fc) fc.focus({preventScroll:true}); REFOCUS=false; }
+  updateFades();
+}
+function scrollChartTo(ts){
+  var sc=$("chartScroll"), band=document.querySelector(".band");
+  if(!sc||!band||ts===null||ts===undefined) return;
+  var t0=dayStartTs(), idx=(ts-t0)/(30*60000);
+  var cr=sc.getBoundingClientRect(), br=band.getBoundingClientRect();
+  var x=(br.left-cr.left+sc.scrollLeft)+br.width*(idx/48);
+  var target=Math.max(0,Math.min(sc.scrollWidth-sc.clientWidth, x-sc.clientWidth/2));
+  try{ sc.scrollTo({left:target,behavior:"smooth"}); }catch(e){ sc.scrollLeft=target; }
+  updateFades();
+}
+function updateFades(){
+  var sc=$("chartScroll"); if(!sc) return;
+  var max=sc.scrollWidth-sc.clientWidth;
+  var j=$("jump"); if(j) j.style.display=(max>4?"":"none");
+  $("fadeL").classList.toggle("on", sc.scrollLeft>4);
+  $("fadeR").classList.toggle("on", max>4 && sc.scrollLeft<max-4);
+}
+
+/* ================= 夏時間 ================= */
+function renderDST(){
+  var ref=dayStartTs()+12*3600000, now=$("dstnow"), nxt=$("dstnext");
+  now.innerHTML=""; nxt.innerHTML="";
+  state.locs.forEach(function(L){
+    var C=BY_TZ[L.tz], off=offMin(ref,L.tz), dst=isDST(ref,L.tz), std=stdOff(ref,L.tz);
+    var a=document.createElement("div"); a.className="dstrow";
+    var stat = dst
+      ? (state.lang==="ja" ? ("夏時間 適用中（標準時 "+offLabel(std)+"）") : ("DST in effect (standard "+offLabel(std)+")"))
+      : (state.lang==="ja" ? "標準時" : "Standard time");
+    var sep=state.lang==="ja"?"　":" · ";
+    a.innerHTML='<span class="who">'+nameOf(C)+'</span><span class="when">'+offLabel(off)+sep+stat+'</span>';
+    now.appendChild(a);
+    var t=nextTransition(ref,L.tz), b=document.createElement("div"); b.className="dstrow";
+    if(!t) b.innerHTML='<span class="who">'+nameOf(C)+'</span><span class="when">'+T("noTrans")+'</span>';
+    else{
+      var w=wallOf(t.ts,L.tz), diff=(t.to-t.from)/60;
+      var dtxt = state.lang==="ja" ? ((diff>0?"+":"")+diff+"時間")
+                                   : ((diff>0?"+":"")+diff+(Math.abs(diff)===1?" hour":" hours"));
+      var jp=state.lang==="ja";
+      b.innerHTML='<span class="who">'+nameOf(C)+'</span><span class="when">'+
+        w.y+"/"+pad(w.m)+"/"+pad(w.d)+" "+hm(w.min)+(jp?"　":" · ")+dtxt+
+        (jp?"（":" (")+offLabel(t.from)+" → "+offLabel(t.to)+(jp?"）":")")+"</span>";
+    }
+    nxt.appendChild(b);
+  });
+}
+
+/* ================= 言語適用 ================= */
+function applyLang(){
+  var L=state.lang;
+  document.documentElement.lang=L;
+  document.body.setAttribute("data-lang",L);
+  document.querySelectorAll(".langsw button").forEach(function(b){
+    b.setAttribute("aria-pressed", String(b.dataset.lang===L)); });
+  $("sub").textContent=T("sub");
+  $("t-cond").textContent=T("tCond"); $("t-res").textContent=T("tList"); $("t-chart").textContent=T("tChart");
+  $("tzhint").textContent=T("tzhint")+(Intl.DateTimeFormat().resolvedOptions().timeZone||"unknown");
+  $("lb-date").textContent=T("lbDate"); $("lb-dur").textContent=T("lbDur"); $("lb-shift").textContent=T("lbShift");
+  $("b-prev").textContent=T("prev"); $("b-next").textContent=T("next");
+  $("b-week").textContent=T("week"); $("today").textContent=T("today");
+  $("t-parts").textContent=T("tParts");
+  $("wintoggle").textContent=state.showWin?T("winHide"):T("winShow");
+  $("addtoggle").textContent=$("picker").hidden?T("addOpen"):T("addClose");
+  $("basehint").textContent=T("basehint");
+  $("q").placeholder=T("qph");
+  $("scorehelp").textContent=T("scoreHelp");
+  $("jump").textContent=T("jump");
+  $("lg1").textContent=T("lg1"); $("lg2").textContent=T("lg2");
+  $("lg3").textContent=T("lg3"); $("lg4").textContent=T("lg4");
+  $("dstsum").textContent=T("dstSum"); $("dsth1").textContent=T("dsth1"); $("dsth2").textContent=T("dsth2");
+  $("bf-tag").textContent=T("brandTag");
+  $("bf-brandline").textContent=T("brandLine");
+  $("outro-text").textContent=T("outroText");
+  $("outro-text2").textContent=T("outroText2");
+  $("outro-h").textContent=T("outroH");
+  $("ey-company").textContent=T("eyCompany");
+  $("ey-contact").textContent=T("eyContact");
+  $("tb-site").setAttribute("aria-label",T("tbSite"));
+  $("tb-logo").setAttribute("aria-label",T("tbSite"));
+  $("bf-priv").textContent=T("privacy");
+  $("foot-calc").textContent=T("footCalc");
+  $("foot-h1").textContent=T("footH1");
+  $("foot-h2").textContent=T("footH2");
+  $("bf-contact").textContent=T("contact");
+  $("lb-incwe").textContent=T("incWeekend");
+  $("t-sel").textContent=T("bestTitle");
+  $("nextwd").textContent=T("nextWd");
+  $("share").textContent=T("shareLink");
+  $("tolist").textContent=T("toList");
+  $("reset").textContent=T("reset");
+  $("lb-title").textContent=T("lbTitle");
+  $("hint-title").textContent=T("titleHint");
+  $("mtitle").placeholder=T("titlePh");
+  $("mtitle").value=state.title||"";
+  $("incwe").checked=state.includeWeekend;
+  var d=$("dur"), cur=String(state.dur); d.innerHTML="";
+  [30,45,60,90,120].forEach(function(m){
+    var o=document.createElement("option"); o.value=String(m); o.textContent=m+T("min");
+    d.appendChild(o); });
+  d.value=cur;
+  if(!$("howto").hidden) $("howto").innerHTML=HOWTO[L];
+}
+function renderAll(){ renderLocs(); renderRes(); renderChart(); renderSel(); renderDST(); }
+
+/* ================= イベント ================= */
+function shiftDate(days){
+  var p=state.date.split("-"), d=new Date(Date.UTC(+p[0],+p[1]-1,+p[2]));
+  d.setUTCDate(d.getUTCDate()+days);
+  state.date=d.getUTCFullYear()+"-"+pad(d.getUTCMonth()+1)+"-"+pad(d.getUTCDate());
+  $("date").value=state.date; state.sel=null; renderAll();
+}
+$("date").value=state.date;
+$("date").addEventListener("change",function(){ if(!this.value)return;
+  state.date=this.value; state.sel=null; renderAll(); });
+$("dur").addEventListener("change",function(){ state.dur=+this.value; state.sel=null; save(); renderAll(); });
+$("today").addEventListener("click",function(){
+  state.date=todayIn(state.locs[0].tz); $("date").value=state.date; state.sel=null; renderAll(); });
+document.querySelectorAll("[data-shift]").forEach(function(b){
+  b.addEventListener("click",function(){ shiftDate(+b.dataset.shift); }); });
+$("wintoggle").addEventListener("click",function(){
+  state.showWin=!state.showWin; this.setAttribute("aria-pressed",String(state.showWin));
+  this.textContent=state.showWin?T("winHide"):T("winShow"); renderLocs(); });
+$("addtoggle").addEventListener("click",function(){
+  var p=$("picker"), open=p.hidden;
+  p.hidden=!open; this.setAttribute("aria-expanded",String(open));
+  this.textContent=open?T("addClose"):T("addOpen");
+  if(open){ renderOpts(); $("q").focus(); } });
+$("q").addEventListener("input",renderOpts);
+$("q").addEventListener("keydown",function(ev){
+  if(ev.key==="Enter"){ var f=$("opts").querySelector(".opt"); if(f){ ev.preventDefault(); f.click(); } } });
+$("scorehelp").addEventListener("click",function(){ toggleHelp(); });
+$("tolist").addEventListener("click",function(){
+  var sec=$("res").closest("section")||$("res");
+  sec.scrollIntoView({behavior:"smooth",block:"start"}); });
+$("nextwd").addEventListener("click",function(){
+  var d=toUTCDate(state.date); d.setUTCDate(d.getUTCDate()+1);
+  state.date=nextWeekdayFrom(dstr(d)); $("date").value=state.date; state.sel=null; renderAll(); });
+$("incwe").addEventListener("change",function(){
+  state.includeWeekend=this.checked; state.sel=null; save(); renderAll(); });
+$("mtitle").addEventListener("input",function(){ state.title=this.value.slice(0,120); save(); renderRes(); renderSel(); });
+var resetArmed=null;
+$("reset").addEventListener("click",function(){
+  var b=this;
+  if(!resetArmed){ b.textContent=T("resetAsk"); b.classList.add("armed");
+    resetArmed=setTimeout(function(){ resetArmed=null; b.textContent=T("reset"); b.classList.remove("armed"); },4000);
+    return; }
+  clearTimeout(resetArmed); resetArmed=null;
+  try{ localStorage.removeItem("bridge-hours-v2"); }catch(e){}
+  if(location.hash) location.hash="";
+  location.reload();
+});
+$("share").addEventListener("click",function(){
+  var u=shareUrl();
+  if(navigator.clipboard&&navigator.clipboard.writeText)
+    navigator.clipboard.writeText(u).then(function(){ toast(T("linkCopied")); },function(){ toast(T("copyFail")); });
+  else toast(T("copyFail")); });
+$("jump").addEventListener("click",function(){ scrollChartTo(focusTs()); });
+$("chartScroll").addEventListener("scroll",updateFades,{passive:true});
+window.addEventListener("resize",updateFades);
+document.querySelectorAll(".langsw button").forEach(function(b){
+  b.addEventListener("click",function(){
+    if(state.lang===b.dataset.lang) return;
+    state.lang=b.dataset.lang; save(); applyLang(); renderAll();
+    if(!$("picker").hidden) renderOpts(); });
+});
+
+window.addEventListener("hashchange",function(){
+  if(readShare()){ state.sel=null; $("date").value=state.date; $("dur").value=String(state.dur);
+    applyLang(); renderAll(); }
+});
+readShare();
+$("date").value=state.date;
+$("dur").value=String(state.dur);
+applyLang();
+renderAll();
+setTimeout(function(){ scrollChartTo(focusTs()); },80);
+setInterval(function(){
+  var a=document.activeElement;
+  if(a&&a.closest&&a.closest("#locs")) return;
+  renderLocs();
+},30000);
+</script>
+
+</body>
+</html>
