@@ -441,6 +441,9 @@ body[data-lang="en"] .hint{font-family:inherit}
 .sf-bar{max-width:1340px;margin:0 auto;padding:14px 26px 24px;display:flex;justify-content:space-between;
   gap:14px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.16);font-size:11.5px;color:rgba(255,255,255,.55)}
 .sf-build{font-family:"IBM Plex Mono",monospace;letter-spacing:.02em}
+.sf-plink{margin-left:16px;color:inherit;text-decoration:underline;text-underline-offset:2px;
+  text-decoration-thickness:1px}
+.sf-plink:hover{color:var(--brand-or)}
 @media (max-width:900px){
   .sf-in{grid-template-columns:1fr;gap:24px;padding:28px 16px 18px}
   .sf-bar{padding:14px 16px 26px}
@@ -501,18 +504,8 @@ body[data-lang="en"] .hint{font-family:inherit}
 }
 </style>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-74PWZDJFWL"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  /* Send the page path only. The share-link hash can carry a meeting title
-     and region settings, so it must never reach Analytics. */
-  gtag('config', 'G-74PWZDJFWL', {
-    page_location: location.origin + location.pathname
-  });
-</script>
+<!-- Cloudflare Web Analytics (cookieless) -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "REPLACE_WITH_YOUR_CLOUDFLARE_TOKEN"}'></script>
 </head>
 <body>
 <div class="masthead">
@@ -678,8 +671,8 @@ body[data-lang="en"] .hint{font-family:inherit}
     </div>
   </div>
   <div class="sf-bar">
-    <span>Copyright&copy; 2026 BEYONDBRIDGE&amp;CO. Pte. Ltd. All rights reserved</span>
-    <span class="sf-build">v1.24 &middot; 2026-08-31</span>
+    <span>Copyright&copy; 2026 BEYONDBRIDGE&amp;CO. Pte. Ltd. All rights reserved<a class="sf-plink" id="sf-plink" href="/privacy/"></a></span>
+    <span class="sf-build">v1.25 &middot; 2026-08-31</span>
   </div>
 </footer>
 </div>
@@ -810,6 +803,7 @@ var STR={
   selTitle:"選択中の時刻", bestTitle:"最有力候補", tList:"候補一覧", outLb:"枠外", lowest:"この日最小", lowestTie:"同率最小", toList:"他の候補を見る", lbTitle:"会議名", titlePh:"Cross-border meeting",
   stOk:"希望枠内", stNear:"少しはみ出し", stBad:"大きな調整",
   reset:"設定をリセット", resetAsk:"もう一度押すとリセット", resetDone:"設定を初期状態に戻しました",
+  privLink:"プライバシーポリシー",
   privacy:"入力した内容はブラウザ内だけで処理され、当社のサーバーに送信されることはありません。Google カレンダーまたは Outlook のボタンを押すと、会議名、日付、所要時間、各地域名と現地時刻が、その各サービスに送信されます。.ics ファイルはお使いの端末内で生成されます。",
   contact:"お問い合わせ: info@beyondbridge.co",
   gcal:"Google カレンダー", outlook:"Outlook（Web）", copy:"時刻をコピー", showChart:"24時間ビュー",
@@ -861,6 +855,7 @@ var STR={
   selTitle:"Selected time", bestTitle:"Best option", tList:"All options", outLb:"Outside", lowest:"lowest today", lowestTie:"tied lowest", toList:"See the other options", lbTitle:"Meeting name", titlePh:"Cross-border meeting",
   stOk:"Within hours", stNear:"Slightly outside", stBad:"Big stretch",
   reset:"Reset settings", resetAsk:"Press again to reset", resetDone:"Settings reset",
+  privLink:"Privacy Policy",
   privacy:"Everything you enter is processed in your browser and is never sent to our servers. Pressing the Google Calendar or Outlook button sends the meeting name, the date, the duration, and each region's name and local time to that service. The .ics file is generated on your device.",
   contact:"Contact: info@beyondbridge.co",
   gcal:"Google Calendar", outlook:"Outlook (web)", copy:"Copy times", showChart:"Show on chart",
@@ -1589,6 +1584,7 @@ function applyLang(){
   $("tb-site").setAttribute("aria-label",T("tbSite"));
   $("tb-logo").setAttribute("aria-label",T("tbSite"));
   $("bf-priv").textContent=T("privacy");
+  $("sf-plink").textContent=T("privLink");
   $("foot-calc").textContent=T("footCalc");
   $("foot-h1").textContent=T("footH1");
   $("foot-h2").textContent=T("footH2");
