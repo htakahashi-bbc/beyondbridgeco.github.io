@@ -501,6 +501,18 @@ body[data-lang="en"] .hint{font-family:inherit}
 }
 </style>
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-74PWZDJFWL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  /* Send the page path only. The share-link hash can carry a meeting title
+     and region settings, so it must never reach Analytics. */
+  gtag('config', 'G-74PWZDJFWL', {
+    page_location: location.origin + location.pathname
+  });
+</script>
 </head>
 <body>
 <div class="masthead">
@@ -667,7 +679,7 @@ body[data-lang="en"] .hint{font-family:inherit}
   </div>
   <div class="sf-bar">
     <span>Copyright&copy; 2026 BEYONDBRIDGE&amp;CO. Pte. Ltd. All rights reserved</span>
-    <span class="sf-build">v1.23 &middot; 2026-08-30</span>
+    <span class="sf-build">v1.24 &middot; 2026-08-31</span>
   </div>
 </footer>
 </div>
